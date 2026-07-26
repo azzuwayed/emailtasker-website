@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "notes": "### Added\n\n- **Today cockpit** — combine mail-derived tasks, manual tasks, and calendar events from multiple\n  connected Microsoft accounts into one structured daily workspace.\n- **Local-first AI assistant** — search cached mail and tasks, inspect the calendar, remember\n  preferences, reopen conversations, and work with explicitly connected MCP tools.\n- **Safe assistant actions** — apply reversible task, mail, and calendar changes with Undo; show\n  durable confirmation cards for sensitive or irreversible work.\n- **AI controls** — opt into email-to-task extraction, choose an autonomy mode, manage memories and\n  connected tools, inspect advanced diagnostics, and limit automatic daily AI-unit spend.\n\n### Changed\n\n- **Local encrypted state** — keep mailbox-derived cache data, durable tasks, AI transcripts,\n  memories, action history, and MCP grants in encrypted on-device stores.\n- **Background preparation** — synchronize connected accounts in Rust while the window is hidden and\n  refresh the cockpit when local task data changes.\n- **Cockpit design** — replace the original mailbox-oriented screen with the compact Today interface,\n  docked assistant, task editors, timeline, reader, and reorganized settings.\n- **Production distribution** — ship universal Developer ID-signed and Apple-notarized macOS\n  installers with signed in-place updates.\n\n### Fixed\n\n- Improve assistant transcript continuity, context compaction, cancellation, retry behavior, action\n  cards, markdown rendering, and diagnostic accuracy.\n- Detect missing Microsoft permissions before Graph operations fail and isolate debug credentials\n  from release Keychain data.",
+  "pub_date": "2026-07-26T00:00:00Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0t0SDRJS2hrMDVadGVqUlhlS2RRbE9KQWRvcDBrVWdmQW14dWVIc0lJSVoyTjhXbzd0cEJ2ZWRBRjNDUm5lNnFFVk1Fc0ZVRWVFQlJNbFFkbGRSWHdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MDY4ODk3CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpzV29ud284aTNzZW9Vbm1sSjhIckZRZCtXUng1MDZnaGNiNnhCRFVVU0IxczREeWFUUHp5aTlsWDhTRTN5Q2pWeWNld2xUQytjZStvVWYxNm1TQ1ZDQT09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.2.0/EmailTasker.app.tar.gz",
+      "dmg": {
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.2.0/EmailTasker_0.2.0_universal.dmg"
+      }
+    },
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0t0SDRJS2hrMDVadGVqUlhlS2RRbE9KQWRvcDBrVWdmQW14dWVIc0lJSVoyTjhXbzd0cEJ2ZWRBRjNDUm5lNnFFVk1Fc0ZVRWVFQlJNbFFkbGRSWHdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MDY4ODk3CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpzV29ud284aTNzZW9Vbm1sSjhIckZRZCtXUng1MDZnaGNiNnhCRFVVU0IxczREeWFUUHp5aTlsWDhTRTN5Q2pWeWNld2xUQytjZStvVWYxNm1TQ1ZDQT09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.2.0/EmailTasker.app.tar.gz",
+      "dmg": {
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.2.0/EmailTasker_0.2.0_universal.dmg"
+      }
+    }
+  }
+}
