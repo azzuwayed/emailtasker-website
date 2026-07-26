@@ -1,0 +1,14 @@
+{
+  "name": "emailtasker-website",
+  "private": true,
+  "packageManager": "pnpm@11.8.0",
+  "scripts": {
+    "check": "pnpm check:format && pnpm check:site",
+    "check:format": "prettier --check \"*.html\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
+    "check:site": "node scripts/check-site.mjs",
+    "format": "prettier --write \"*.html\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\""
+  },
+  "devDependencies": {
+    "prettier": "3.8.4"
+  }
+}
