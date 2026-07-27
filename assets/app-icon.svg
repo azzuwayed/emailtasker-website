@@ -11,8 +11,8 @@
   <rect width="1024" height="1024" rx="226" fill="url(#background)"/>
   <g filter="url(#shadow)">
     <rect x="180" y="254" width="664" height="516" rx="96" fill="#fff"/>
-    <path d="M222 327 512 548 802 327" fill="none" stroke="#3853c8" stroke-linecap="round" stroke-linejoin="round" stroke-width="54"/>
     <path d="m216 708 210-190m382 190L598 518" fill="none" stroke="#dce3ff" stroke-linecap="round" stroke-width="42"/>
+    <path d="M222 327 512 548 802 327" fill="none" stroke="#3853c8" stroke-linecap="round" stroke-linejoin="round" stroke-width="54"/>
   </g>
   <circle cx="781" cy="758" r="142" fill="#ffb14e" stroke="#fff" stroke-width="28"/>
   <path d="m716 758 45 46 91-101" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="34"/>
