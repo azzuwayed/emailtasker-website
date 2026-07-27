@@ -1,7 +1,6 @@
 # Changelog
 
-Public user-facing changes in EmailTasker releases. EmailTasker's private source changelog is
-canonical; the local release workflow copies each dated release section here.
+Simple, customer-facing changes in EmailTasker releases.
 
 ## [Unreleased]
 
@@ -9,54 +8,41 @@ canonical; the local release workflow copies each dated release section here.
 
 ### Added
 
-- **Pro membership access** — require an active azzuwayed Pro membership and registered device before
-  opening the cockpit, with first-use, payment-pending, expired, device-limit, and renewal recovery
-  journeys in English and Arabic.
-- **Offline verification grace** — continue verified Pro access for up to 24 hours during a Hub
-  outage, never beyond the paid membership end, with an in-app deadline notice.
-- **Task Intelligence** — define focus, categories, and sender or subject rules; review classification
-  history, correct results, undo learning, and reclassify existing tasks.
-- **Workflow automation foundation** — add encrypted schedules, filters, AI steps, shared tool
-  actions, durable run history, and a development-only visual builder.
+- **Included with Pro** — sign in with an active azzuwayed Pro membership to use EmailTasker, with
+  clear help when payment, renewal, or a device seat needs attention.
+- **Personalized task sorting** — tell EmailTasker what matters using your focus, categories, and
+  sender or subject rules, then review and correct its choices.
+- **Better AI controls** — see monthly usage more clearly, hide the balance when you prefer, and add
+  more units when needed.
 
 ### Changed
 
-- **Native authorization** — enforce Pro access in Rust for IPC, sync, workflows, agent tools, and
-  writes; locked launches do not mount or reveal cached product surfaces.
-- **Device identity** — share one stable physical-Mac identity across Hub-integrated native apps and
-  preserve existing EmailTasker registrations during migration.
-- **AI cache privacy** — let the Hub derive opaque app, user, thread, and turn cache identities instead
-  of accepting caller-owned provider cache keys.
-- **AI balance controls** — show monthly quota progress, allow the balance display to be hidden, and
-  keep recharge recovery visible when units are exhausted.
+- **Smoother verification** — brief connection problems no longer interrupt recently verified Pro
+  members.
+- **Easy return after renewal** — renew Pro and return to your existing workspace without reconnecting
+  your Microsoft accounts.
 
 ## [0.2.0] - 2026-07-26
 
 ### Added
 
-- **Today cockpit** — combine mail-derived tasks, manual tasks, and calendar events from multiple
-  connected Microsoft accounts into one structured daily workspace.
-- **Local-first AI assistant** — search cached mail and tasks, inspect the calendar, remember
-  preferences, reopen conversations, and work with explicitly connected MCP tools.
-- **Safe assistant actions** — apply reversible task, mail, and calendar changes with Undo; show
-  durable confirmation cards for sensitive or irreversible work.
-- **AI controls** — opt into email-to-task extraction, choose an autonomy mode, manage memories and
-  connected tools, inspect advanced diagnostics, and limit automatic daily AI-unit spend.
+- **One Today view** — bring tasks, mail, and meetings from all your connected Microsoft accounts
+  into one calm workspace.
+- **A capable assistant** — ask about your day, find useful mail, remember your preferences, and get
+  help taking action.
+- **Actions with confidence** — undo everyday changes and review important actions before they happen.
+- **Controls that fit you** — choose how independently the assistant works, manage what it remembers,
+  and set a daily AI usage limit.
 
 ### Changed
 
-- **Local encrypted state** — keep mailbox-derived cache data, durable tasks, AI transcripts,
-  memories, action history, and MCP grants in encrypted on-device stores.
-- **Background preparation** — synchronize connected accounts in Rust while the window is hidden and
-  refresh the cockpit when local task data changes.
-- **Cockpit design** — replace the original mailbox-oriented screen with the compact Today interface,
-  docked assistant, task editors, timeline, reader, and reorganized settings.
-- **Production distribution** — ship universal Developer ID-signed and Apple-notarized macOS
-  installers with signed in-place updates.
+- **A more useful start to the day** — EmailTasker prepares connected accounts in the background and
+  refreshes Today when new work arrives.
+- **A clearer cockpit** — work from the priority board, calendar timeline, assistant, reader, and
+  simpler settings in one focused design.
+- **Simple updates** — install new versions from inside EmailTasker.
 
 ### Fixed
 
-- Improve assistant transcript continuity, context compaction, cancellation, retry behavior, action
-  cards, markdown rendering, and diagnostic accuracy.
-- Detect missing Microsoft permissions before Graph operations fail and isolate debug credentials
-  from release Keychain data.
+- Improve assistant conversations, retries, action cards, and message formatting.
+- Show clearer guidance when a Microsoft account needs attention.

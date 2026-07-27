@@ -9,6 +9,9 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 
 - Work on `main`.
 - Keep the English root and RTL Arabic `/ar/` page equivalent.
+- Treat this repository as part of every EmailTasker production deployment. Before publication,
+  align both product pages and public release metadata with the customer-visible features that
+  actually shipped.
 - Run `pnpm check` before requesting a commit.
 - Send pricing, membership, account, support, privacy, and download discovery to the localized
   `azzuwayed.com` routes.
@@ -17,6 +20,10 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
   privacy/security caveats into visible marketing copy — that detail lives on the
   `azzuwayed.com/privacy` page linked from the footer. This site's only job is to attract, not
   reassure.
+- Keep `CHANGELOG.md` and the release notes inside `updates.json` short and marketing-only: name the
+  customer benefit in plain language and omit implementation details, internal architecture,
+  security controls, engineering terminology, and development-only work. Prepare the source release
+  notes to this standard before EmailTasker's release workflow generates these files.
 
 **Ask first**
 
@@ -36,7 +43,7 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 | `index.html`, `ar/`      | English and Arabic product pages                      |
 | `assets/`                | Public icon and Abdullah-approved product screenshots |
 | `scripts/check-site.mjs` | Static contract checks                                |
-| `CHANGELOG.md`           | Public release notes mirrored from EmailTasker source |
+| `CHANGELOG.md`           | Plain customer-facing release notes                   |
 | `updates.json`           | Generated signed-updater manifest after first release |
 
 ## Commands

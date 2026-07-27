@@ -95,6 +95,7 @@ const english = read(htmlFiles[0]);
 const arabic = read(htmlFiles[1]);
 for (const expected of [
   "https://azzuwayed.com/en/products/emailtasker",
+  "https://azzuwayed.com/en/account/billing/membership",
   "https://azzuwayed.com/en/privacy",
   "https://azzuwayed.com/en/contact",
   "https://azzuwayed.com/en/account",
@@ -105,6 +106,7 @@ for (const expected of [
 for (const expected of [
   'lang="ar" dir="rtl"',
   "https://azzuwayed.com/ar/products/emailtasker",
+  "https://azzuwayed.com/ar/account/billing/membership",
   "https://azzuwayed.com/ar/privacy",
   "https://azzuwayed.com/ar/contact",
   "https://azzuwayed.com/ar/account",

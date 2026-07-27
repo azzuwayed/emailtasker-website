@@ -20,4 +20,6 @@ pnpm check
 ```
 
 GitHub Pages serves `main` with the custom domain in `CNAME`. EmailTasker's local release workflow
-generates `updates.json`, mirrors the released changelog section, and publishes the GitHub Release.
+generates `updates.json`, publishes the plain customer-facing release notes, and creates the GitHub
+Release. Every production deployment keeps the English and Arabic product pages aligned with the
+features customers can use.
