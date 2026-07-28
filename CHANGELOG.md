@@ -4,6 +4,17 @@ Simple, customer-facing changes in EmailTasker releases.
 
 ## [Unreleased]
 
+### Changed
+
+- **EmailTasker now stores sign-ins without routine macOS prompts by default.** Mac Keychain remains
+  available as an extra-protection option, and existing Keychain users choose once whether to keep it
+  or migrate.
+- **Local-data recovery is explicit and safer.** Missing keys, unreadable data, disk problems, and
+  upgrade problems now have distinct guidance. EmailTasker never silently replaces a database; if
+  you choose to start empty, it preserves the original recovery files first.
+- Storage changes now report credentials left in the old location and keep a cleanup warning visible
+  until removal succeeds.
+
 ## [0.4.0] - 2026-07-28
 
 ### Added
