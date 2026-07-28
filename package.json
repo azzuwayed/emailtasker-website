@@ -6,7 +6,8 @@
     "check": "pnpm check:format && pnpm check:site",
     "check:format": "prettier --check \"*.html\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
     "check:site": "node scripts/check-site.mjs",
-    "format": "prettier --write \"*.html\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\""
+    "format": "prettier --write \"*.html\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
+    "format:release": "prettier --write CHANGELOG.md updates.json"
   },
   "devDependencies": {
     "prettier": "3.8.4"

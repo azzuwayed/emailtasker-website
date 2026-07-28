@@ -51,7 +51,11 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 ```bash
 pnpm install
 pnpm check
+pnpm format:release
 ```
+
+`pnpm format:release` formats only the generated updater manifest and public changelog before the
+release checkpoint gate.
 
 ## Key invariants
 
