@@ -4,16 +4,100 @@ Simple, customer-facing changes in EmailTasker releases.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-08-02
+
+### Added
+
+- **Google accounts, alongside Microsoft.** Connect a Gmail account and everything works the same
+  way — mail becomes tasks, your primary Google calendar appears in Today, and archiving, trashing,
+  or unsubscribing happens where the message actually lives. Connect one, both, or neither.
+- **A guided first run.** Your first time in Today now walks you through creating a piece of work,
+  connecting a mailbox if you want one, and trying the assistant — and picks up where you left off if
+  you close the app partway.
+- **Read your mail without leaving EmailTasker.** Open the message behind a task from either account,
+  download an attachment, and archive, trash, or unsubscribe right there.
+- **A quick look at recent mail.** See what has arrived across your connected accounts, what is still
+  unread, and where each message ended up as work.
+- **A rebuilt workspace.** Moving between Today, the assistant, subscriptions, and task rules now
+  happens in the window's own title bar, and EmailTasker asks before it leaves unfinished work
+  behind.
+- **Settings has its own window.** Accounts, the assistant, privacy, and recovery each have a proper
+  home, and the actions that remove something are clearer about what they do.
+- **Task rules have a home of their own** — a quieter editor, mistakes reported where you make them,
+  and dates shown the way you read them.
+- **A Subscriptions workspace that shows what is actually filling your inbox.** EmailTasker groups
+  newsletters and automated senders, shows how much of your inbox each one accounts for, and
+  unsubscribes for you where the sender supports it.
+- **Reviewed inbox cleanup.** Preview exactly which messages a cleanup would move to Trash, confirm
+  the batch, and see a clear summary of what was moved and what was skipped.
+- **Every message from one sender, in one place.** Page through what a sender has sent you, filter to
+  what you never read, unsubscribe from a single message, and finish a cleanup that stalled.
+- **One sender across two mailboxes.** If a newsletter reaches more than one of your accounts,
+  EmailTasker says so and offers to handle the next one straight away.
+- **Turning email into tasks is now an automation you can see.** It arrives switched on, and you can
+  pause it, look inside it, or take an update to it — with more automations to follow.
+- **An assistant workspace with saved threads.** Name, search, pin, branch, and archive conversations;
+  longer pieces of work run as tracked jobs with their results kept alongside the thread.
+- **A composer built for real work.** Write in a box that grows with what you type, attach a file, act
+  on any message, and branch a conversation without losing the original.
+- **Undo, everywhere it matters.** Completing, deleting, correcting, and assistant actions all offer
+  the same ten-second Undo, with the time you have left in plain view.
+- **A better empty day.** When there is genuinely nothing left, Today says so properly — and lets you
+  add a task or an event without going anywhere else.
+- **Calendar navigation that skips the empty stretches**, so paging forward lands on a day that has
+  something on it.
+- **Your account photo** now appears in the cockpit and in account management, with your initials as a
+  fallback.
+- **Clear AI model choices** — pick from the models included with your plan instead of typing a name.
+- **Sanad7 knowledge, for beta accounts.** Connect a Sanad7 workspace, choose which collections to
+  draw on, and ask questions answered from your own material, with references you can follow. When
+  there is little to go on, EmailTasker says so instead of guessing.
+- **A complete Workflows workspace for beta accounts.** Build automations from templates or a visual
+  canvas, review changes before they go live, try one out safely first, and see, cancel, or resume
+  whatever is running.
+- **Manual, local-time schedule, and New Mail triggers.** New Mail rules can watch the accounts you
+  choose and match on sender, subject, preview, importance, or whether something is attached.
+- **Shareable workflows and assistant-written drafts.** Send a workflow to someone without sending any
+  of your mail or account details, and let the assistant prepare one that only you can switch on.
+
 ### Changed
 
+- The workflow beta now keeps your changes in draft until you switch them on, picks a run back up
+  where it left off after a restart, and supports archive, restore, version history, and English and
+  Arabic layouts.
 - **EmailTasker now stores sign-ins without routine macOS prompts by default.** Mac Keychain remains
-  available as an extra-protection option, and existing Keychain users choose once whether to keep it
-  or migrate.
-- **Local-data recovery is explicit and safer.** Missing keys, unreadable data, disk problems, and
-  upgrade problems now have distinct guidance. EmailTasker never silently replaces a database; if
-  you choose to start empty, it preserves the original recovery files first.
-- Storage changes now report credentials left in the old location and keep a cleanup warning visible
-  until removal succeeds.
+  available if you prefer it, and anyone already using it chooses once whether to stay.
+- **Local-data recovery is explicit and safer.** EmailTasker never quietly replaces what you have, and
+  if you choose to start over it keeps the original first.
+- **Pro status notices are friendlier** — clearer about what actually needs attention, and no longer
+  sitting on top of your work.
+- **Subscriptions reads more plainly.** A filter that matches nothing now looks different from an
+  inbox that is genuinely clear, and searching no longer moves the impact bars around.
+- **Clearer selection and hover throughout**, in both light and dark, and calmer if you have reduced
+  motion switched on.
+- **The assistant stays responsive on long conversations**, and Today no longer works away while it is
+  hidden.
+
+### Fixed
+
+- **Cleaning up Gmail now works.** Moving newsletters to Trash on a Google account previously failed
+  every time.
+- **A connection that fails now tells you why**, in your language, and what to do about it.
+- **EmailTasker waits as long as Google asks** before trying again, instead of retrying too soon.
+- **Your board no longer jumps back to an older version of itself** when a refresh lands just after an
+  edit.
+- **Subscription cleanup is honest and repeatable.** It names what a failed cleanup left behind,
+  retries only that, and counts mail that is already gone as done.
+- **One unreadable subscription no longer takes the whole page with it.**
+- **A message that fails to load now looks like a failure**, and an unsubscribe that was confirmed is
+  no longer shown the same as one that was only requested.
+- **EmailTasker no longer offers to clean up nothing**, and the confirm button steps aside once there
+  is a result.
+- **The assistant composer scrolls properly** — click anywhere to start typing, and reading back
+  through a conversation is no longer interrupted.
+- **The all-clear view fits a short window.**
+- **The membership link opens the right page again.**
+- **Sanad7 connection problems explain themselves** instead of showing a code.
 
 ## [0.4.0] - 2026-07-28
 
