@@ -13,8 +13,9 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
   align both product pages and public release metadata with the customer-visible features that
   actually shipped.
 - Run `pnpm check` before requesting a commit.
-- Send pricing, membership, account, support, privacy, and download discovery to the localized
-  `azzuwayed.com` routes.
+- Send pricing, membership, account, support, and privacy to the localized `azzuwayed.com` routes.
+- Keep public download discovery on both the microsite and the localized Hub product page. Resolve
+  the direct installer from `updates.json`; the native app remains the Pro access boundary.
 - Write copy in plain, benefit-first language. Never introduce technical or security jargon
   (encrypted, cache, boundary, extraction, sensitive, documented, local-first) or defensive
   privacy/security caveats into visible marketing copy — that detail lives on the
@@ -32,7 +33,7 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 
 **Never**
 
-- Add pricing, checkout, account, support, privacy, or direct-download UI to this site.
+- Add pricing, checkout, account, support, or privacy UI to this site.
 - Put secrets, private source, or unsigned release artifacts in this repository.
 - Hand-edit `updates.json`; EmailTasker's local release workflow owns it.
 
@@ -41,6 +42,7 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 | Path                     | Role                                                  |
 | ------------------------ | ----------------------------------------------------- |
 | `index.html`, `ar/`      | English and Arabic product pages                      |
+| `download.js`            | Validated latest-DMG link hydration                   |
 | `assets/`                | Public icon and Abdullah-approved product screenshots |
 | `scripts/check-site.mjs` | Static contract checks                                |
 | `CHANGELOG.md`           | Plain customer-facing release notes                   |
@@ -59,8 +61,9 @@ release checkpoint gate.
 
 ## Key invariants
 
-- GitHub Releases contain the public signed artifacts; the microsite never links directly to them.
-- The Hub catalog is the advertised membership and download surface.
+- GitHub Releases contain the public signed artifacts; both the microsite and Hub product page link
+  to the latest signed DMG.
+- The Hub catalog is the advertised membership surface, while download discovery is public.
 - `updates.json` is public update infrastructure, not an authorization boundary.
 
 ## Source-of-truth docs

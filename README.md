@@ -8,9 +8,10 @@ Public product microsite and release repository for EmailTasker.
 - Arabic:
   [azzuwayed.com/ar/products/emailtasker](https://azzuwayed.com/ar/products/emailtasker)
 
-The static site describes the product. Pricing, membership, accounts, support, privacy, and download
-discovery live on azzuwayed.com. Public GitHub Releases hold the signed macOS installer and updater
-artifacts; EmailTasker still requires membership activation.
+The static site describes the product and links to the latest signed macOS installer. Pricing,
+membership, accounts, support, and privacy live on azzuwayed.com, whose product page exposes the same
+public download. Public GitHub Releases hold the installer and updater artifacts; EmailTasker still
+requires membership activation after installation.
 
 ## Development
 

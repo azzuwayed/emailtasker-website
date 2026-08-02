@@ -25,6 +25,26 @@ function read(file) {
   return fs.readFileSync(file, "utf8");
 }
 
+async function resolvedDownloadHref(script, manifest) {
+  const fallback =
+    "https://github.com/azzuwayed/emailtasker-website/releases/latest";
+  const link = {
+    dataset: { manifestUrl: "updates.json" },
+    href: fallback,
+  };
+  new vm.Script(script, { filename: "download.js" }).runInNewContext({
+    document: {
+      querySelectorAll: () => [link],
+    },
+    fetch: async () => ({
+      ok: true,
+      json: async () => manifest,
+    }),
+  });
+  await new Promise((resolve) => setImmediate(resolve));
+  return link.href;
+}
+
 function localTarget(file, value) {
   if (/^(?:https?:|mailto:|#|data:)/.test(value)) return;
   const localValue = value.split("#")[0].split("?")[0];
@@ -75,8 +95,6 @@ for (const file of htmlFiles) {
   }
 
   for (const forbidden of [
-    /github\.com\/azzuwayed\/emailtasker-website\/releases\/download/i,
-    /href="[^"]*\.dmg/i,
     /href="[^"]*updates\.json/i,
     /href="[^"]*\/pricing/i,
     /\$\s*\d/,
@@ -94,6 +112,11 @@ for (const file of htmlFiles) {
 const english = read(htmlFiles[0]);
 const arabic = read(htmlFiles[1]);
 for (const expected of [
+  "Download for macOS",
+  "data-emailtasker-download",
+  'data-manifest-url="updates.json"',
+  'src="download.js"',
+  "https://github.com/azzuwayed/emailtasker-website/releases/latest",
   "https://azzuwayed.com/en/products/emailtasker",
   "https://azzuwayed.com/en/account/billing/membership",
   "https://azzuwayed.com/en/privacy",
@@ -105,6 +128,11 @@ for (const expected of [
 }
 for (const expected of [
   'lang="ar" dir="rtl"',
+  "تحميل لنظام macOS",
+  "data-emailtasker-download",
+  'data-manifest-url="../updates.json"',
+  'src="../download.js"',
+  "https://github.com/azzuwayed/emailtasker-website/releases/latest",
   "https://azzuwayed.com/ar/products/emailtasker",
   "https://azzuwayed.com/ar/account/billing/membership",
   "https://azzuwayed.com/ar/privacy",
@@ -141,8 +169,41 @@ if (fs.existsSync(manifestPath)) {
     const manifest = JSON.parse(read(manifestPath));
     for (const platform of ["darwin-aarch64", "darwin-x86_64"]) {
       const entry = manifest.platforms?.[platform];
-      if (!entry?.signature || !entry?.url) {
+      if (!entry?.signature || !entry?.url || !entry?.dmg?.url) {
         failures.push(`updates.json: incomplete ${platform} entry`);
+      } else if (
+        !entry.dmg.url.startsWith(
+          "https://github.com/azzuwayed/emailtasker-website/releases/download/",
+        ) ||
+        !entry.dmg.url.endsWith(".dmg")
+      ) {
+        failures.push(`updates.json: invalid ${platform} DMG URL`);
+      }
+    }
+
+    const downloadScriptPath = path.join(root, "download.js");
+    if (!fs.existsSync(downloadScriptPath)) {
+      failures.push("missing download.js");
+    } else {
+      const script = read(downloadScriptPath);
+      const expectedDmg = manifest.platforms?.["darwin-aarch64"]?.dmg?.url;
+      if ((await resolvedDownloadHref(script, manifest)) !== expectedDmg) {
+        failures.push("download.js: did not resolve the approved manifest DMG");
+      }
+      const rejectedHref = await resolvedDownloadHref(script, {
+        platforms: {
+          "darwin-aarch64": {
+            dmg: { url: "https://example.test/EmailTasker.dmg" },
+          },
+        },
+      });
+      if (
+        rejectedHref !==
+        "https://github.com/azzuwayed/emailtasker-website/releases/latest"
+      ) {
+        failures.push(
+          "download.js: did not retain the fallback for an unapproved URL",
+        );
       }
     }
   } catch (error) {
@@ -156,5 +217,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "site check passed: EN/AR pages, localized Hub handoffs, product screenshots, metadata, and updater host",
+  "site check passed: EN/AR pages, public downloads, localized Hub handoffs, product screenshots, metadata, and updater host",
 );
