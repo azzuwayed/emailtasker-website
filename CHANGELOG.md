@@ -4,6 +4,34 @@ Simple, customer-facing changes in EmailTasker releases.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-08-03
+
+### Added
+
+- **A Morning Brief for the day ahead.** Choose a time and EmailTasker brings your priorities,
+  meetings, risks, and useful focus windows into Today, with earlier briefs kept close by.
+- **A guided inbox cleanup.** Work through one sender at a time, decide what to keep or protect, and
+  widen a cleanup to matching senders when that is genuinely useful.
+- **Daily inbox suggestions.** EmailTasker quietly surfaces a small set of high-impact senders instead
+  of asking you to sort through the whole inbox at once.
+- **Feedback for assistant replies.** Rate a turn and add a note when the response needs more context.
+
+### Changed
+
+- **Cleanup now covers the mailbox history that matters, not just a recent sample.** Bulk senders are
+  ranked more accurately, cleanup happens in efficient batches, and each batch has its own history
+  and Undo.
+- **Archive is now the cleanup default.** Messages stay recoverable, and protected or personal mail
+  is held back automatically.
+- **Assistant approvals are clearer.** Deny an action, allow it once, or remember that reversible
+  actions can proceed automatically.
+
+### Fixed
+
+- **Pending assistant actions are harder to miss**, while quick actions stay out of the way until the
+  conversation is expanded.
+- **Every startup problem now offers a safe way forward** instead of leaving the app at a dead end.
+
 ## [0.5.0] - 2026-08-02
 
 ### Added
