@@ -3,11 +3,13 @@
   "private": true,
   "packageManager": "pnpm@11.8.0",
   "scripts": {
-    "check": "pnpm check:format && pnpm check:site",
+    "check": "pnpm check:format && pnpm check:product && pnpm check:site",
     "check:format": "prettier --check \"*.html\" \"*.js\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
     "check:site": "node scripts/check-site.mjs",
+    "check:product": "node scripts/sync-product.mjs --check",
     "format": "prettier --write \"*.html\" \"*.js\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
-    "format:release": "prettier --write CHANGELOG.md updates.json"
+    "format:release": "prettier --write CHANGELOG.md updates.json product.json",
+    "sync:product": "node scripts/sync-product.mjs"
   },
   "devDependencies": {
     "prettier": "3.8.4"

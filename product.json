@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "productId": "emailtasker",
+  "contentRevision": "5278b6e775ed0f7638c276fcc6bf314ca1f7851e807c5ecb5891e0ca8565b0f8",
+  "manifest": {
+    "schemaVersion": 1,
+    "productId": "emailtasker",
+    "locales": {
+      "en": {
+        "tag": "Start with a morning brief, then turn email into a clear, manageable day.",
+        "overview": "EmailTasker brings email, tasks, and calendars into one native macOS workspace. Its morning brief prepares your day, the assistant works with approvals and ratings, and guided cleanup helps you safely reduce inbox noise with actions you can undo.",
+        "audience": "Professionals managing busy days across Microsoft or Google accounts who want a clearer plan and a calmer inbox.",
+        "accountSummary": "Plan your day across email, tasks, and calendars with a local-first AI assistant.",
+        "heroAlt": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
+        "highlights": [
+          {
+            "key": "brief",
+            "text": "Begin with a focused morning brief drawn from your tasks and calendars."
+          },
+          {
+            "key": "assistant",
+            "text": "Approve assistant actions, undo reversible changes, and rate answers to improve your workflow."
+          },
+          {
+            "key": "cleanup",
+            "text": "Use guided inbox cleanup and daily hygiene suggestions to reduce recurring clutter safely."
+          }
+        ]
+      },
+      "ar": {
+        "tag": "ابدأ بموجز صباحي، ثم حوّل البريد إلى يوم واضح وسهل الإدارة.",
+        "overview": "يجمع EmailTasker البريد والمهام والتقويمات في مساحة عمل أصلية على macOS. يهيئ الموجز الصباحي يومك، ويعمل المساعد بموافقات وتقييمات واضحة، ويساعدك التنظيف الموجّه على تقليل ضوضاء البريد بأمان مع إجراءات قابلة للتراجع.",
+        "audience": "المحترفون الذين يديرون أيامًا مزدحمة عبر حسابات Microsoft أو Google ويريدون خطة أوضح وصندوق وارد أهدأ.",
+        "accountSummary": "خطّط يومك من البريد والمهام والتقويم، بمساعدة ذكاء اصطناعي يحفظ بياناته على جهازك أولًا.",
+        "heroAlt": "موجز EmailTasker الصباحي مع التقويم والمهام ذات الأولوية وإرشادات المساعد.",
+        "highlights": [
+          {
+            "key": "brief",
+            "text": "ابدأ بموجز صباحي مركّز يستند إلى مهامك وتقويماتك."
+          },
+          {
+            "key": "assistant",
+            "text": "وافق على إجراءات المساعد وتراجع عن التغييرات القابلة للعكس وقيّم الإجابات لتحسين سير عملك."
+          },
+          {
+            "key": "cleanup",
+            "text": "استخدم التنظيف الموجّه واقتراحات النظافة اليومية لتقليل الفوضى المتكررة بأمان."
+          }
+        ]
+      }
+    },
+    "media": {
+      "hero": {
+        "path": "product/media/hero.webp",
+        "alt": {
+          "en": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
+          "ar": "موجز EmailTasker الصباحي مع التقويم والمهام ذات الأولوية وإرشادات المساعد."
+        }
+      },
+      "screenshots": [
+        {
+          "path": "product/media/cockpit-focus.webp",
+          "alt": {
+            "en": "EmailTasker Focus view with a timeline and compact priority columns.",
+            "ar": "واجهة التركيز في EmailTasker مع خط زمني وأعمدة أولوية مختصرة."
+          }
+        },
+        {
+          "path": "product/media/assistant.webp",
+          "alt": {
+            "en": "EmailTasker assistant response with task context and an approval state.",
+            "ar": "رد من مساعد EmailTasker يستند إلى سياق المهام ويعرض حالة الموافقة."
+          }
+        },
+        {
+          "path": "product/media/ai-memory-management.webp",
+          "alt": {
+            "en": "EmailTasker settings for assistant behavior, memory, and local-first controls.",
+            "ar": "إعدادات EmailTasker لسلوك المساعد والذاكرة وحفظ البيانات على الجهاز أولًا."
+          }
+        },
+        {
+          "path": "product/media/all-clear.webp",
+          "alt": {
+            "en": "EmailTasker all-clear state after the day’s tasks are handled.",
+            "ar": "حالة إنجاز اليوم في EmailTasker بعد التعامل مع المهام."
+          }
+        }
+      ]
+    },
+    "links": {
+      "website": {
+        "en": "https://emailtasker.azzuwayed.com",
+        "ar": "https://emailtasker.azzuwayed.com/ar"
+      },
+      "releaseNotes": {
+        "en": "https://github.com/azzuwayed/emailtasker-website/releases",
+        "ar": "https://github.com/azzuwayed/emailtasker-website/releases"
+      },
+      "download": {
+        "manifestUrl": "https://emailtasker.azzuwayed.com/updates.json",
+        "fallbackUrl": "https://github.com/azzuwayed/emailtasker-website/releases/latest",
+        "allowedUrlPrefixes": [
+          "https://github.com/azzuwayed/emailtasker-website/releases/download/"
+        ]
+      }
+    }
+  }
+}

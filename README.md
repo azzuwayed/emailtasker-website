@@ -21,6 +21,8 @@ pnpm check
 ```
 
 GitHub Pages serves `main` with the custom domain in `CNAME`. EmailTasker's local release workflow
-generates `updates.json`, publishes the plain customer-facing release notes, and creates the GitHub
-Release. Every production deployment keeps the English and Arabic product pages aligned with the
-features customers can use.
+generates `updates.json`, publishes the plain customer-facing release notes, and stages the GitHub
+Release. `pnpm sync:product` renders the marked English and Arabic copy from
+`../emailtasker/product/manifest.json` and writes `product.json` with the exact content revision.
+The release stays drafted until this microsite and the Hub expose that revision. Every production
+deployment keeps both product pages aligned with the features customers can use.

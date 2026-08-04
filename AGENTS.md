@@ -39,19 +39,22 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 
 ## Layout
 
-| Path                     | Role                                                  |
-| ------------------------ | ----------------------------------------------------- |
-| `index.html`, `ar/`      | English and Arabic product pages                      |
-| `download.js`            | Validated latest-DMG link hydration                   |
-| `assets/`                | Public icon and Abdullah-approved product screenshots |
-| `scripts/check-site.mjs` | Static contract checks                                |
-| `CHANGELOG.md`           | Plain customer-facing release notes                   |
-| `updates.json`           | Generated signed-updater manifest after first release |
+| Path                       | Role                                                  |
+| -------------------------- | ----------------------------------------------------- |
+| `index.html`, `ar/`        | English and Arabic product pages                      |
+| `download.js`              | Validated latest-DMG link hydration                   |
+| `assets/`                  | Public icon and Abdullah-approved product screenshots |
+| `scripts/check-site.mjs`   | Static contract checks                                |
+| `CHANGELOG.md`             | Plain customer-facing release notes                   |
+| `updates.json`             | Generated signed-updater manifest after first release |
+| `product.json`             | Exact app-owned marketing revision                    |
+| `scripts/sync-product.mjs` | Manifest-to-microsite renderer and parity gate        |
 
 ## Commands
 
 ```bash
 pnpm install
+pnpm sync:product
 pnpm check
 pnpm format:release
 ```
@@ -65,6 +68,8 @@ release checkpoint gate.
   to the latest signed DMG.
 - The Hub catalog is the advertised membership surface, while download discovery is public.
 - `updates.json` is public update infrastructure, not an authorization boundary.
+- Visible product copy and `product.json` are generated from the source repo's bilingual manifest;
+  edit the manifest, then sync this repo.
 
 ## Source-of-truth docs
 
