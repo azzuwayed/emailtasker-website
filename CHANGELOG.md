@@ -4,6 +4,11 @@ Simple, customer-facing changes in EmailTasker releases.
 
 ## [Unreleased]
 
+### Changed
+
+- **Start free.** Your tasks and calendar work without a membership. Pro connects your mailbox,
+  turns email into tasks, and brings in the assistant.
+
 ## [0.6.0] - 2026-08-03
 
 ### Added
