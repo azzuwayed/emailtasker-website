@@ -1,20 +1,20 @@
 {
-  "version": "0.6.0",
-  "notes": "### Added\n\n- **A Morning Brief for the day ahead.** Choose a time and EmailTasker brings your priorities,\n  meetings, risks, and useful focus windows into Today, with earlier briefs kept close by.\n- **A guided inbox cleanup.** Work through one sender at a time, decide what to keep or protect, and\n  widen a cleanup to matching senders when that is genuinely useful.\n- **Daily inbox suggestions.** EmailTasker quietly surfaces a small set of high-impact senders instead\n  of asking you to sort through the whole inbox at once.\n- **Feedback for assistant replies.** Rate a turn and add a note when the response needs more context.\n\n### Changed\n\n- **Cleanup now covers the mailbox history that matters, not just a recent sample.** Bulk senders are\n  ranked more accurately, cleanup happens in efficient batches, and each batch has its own history\n  and Undo.\n- **Archive is now the cleanup default.** Messages stay recoverable, and protected or personal mail\n  is held back automatically.\n- **Assistant approvals are clearer.** Deny an action, allow it once, or remember that reversible\n  actions can proceed automatically.\n\n### Fixed\n\n- **Pending assistant actions are harder to miss**, while quick actions stay out of the way until the\n  conversation is expanded.\n- **Every startup problem now offers a safe way forward** instead of leaving the app at a dead end.",
-  "pub_date": "2026-08-03T00:00:00Z",
+  "version": "0.7.0",
+  "notes": "### Added\n\n- **Start free.** Your tasks and your calendar work without a membership. Open the app, plan your\n  day, and decide about Pro when you are ready.\n- **Pro is now labelled, not hidden.** Locked parts of the app say what a membership unlocks —\n  connecting a mailbox, the assistant, workflows, unsubscribing — instead of quietly disappearing.\n\n### Changed\n\n- **The assistant explains itself when it is locked** rather than going quiet.\n- **The work you already have stays yours.** Tasks and events remain readable if a membership lapses;\n  your mailbox needs Pro to reconnect.\n- **Membership status is now reported accurately** in Settings, including when a membership has\n  expired or payment is still pending.",
+  "pub_date": "2026-08-06T00:00:00Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0o1dytWU2RpTHI2dzNCMUxWUEhmY0RlYnJtR1MzVXlTQTlHd0RqZDduY2JSYzFWcDJSNW41aUVUZUh5YkkzWWx3YmRJR0FvMllzYUtabVRRTlExZmdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NzgxNjk0CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpSTWlHSmNVVW04QUJMcmVyVVAwR0Y1bG9ZQVlxbnIrYUhLR3RNZkc3OFV1WWx5UHJYajJUekFLbFo1REttaXEwR2daNE9KOHk5S09wOFFYV2JpSFdCUT09Cg==",
-      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.6.0/EmailTasker.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0I0Z2Y1V1hKWkRTdTdxWnlIZDVTbXhPM0d4WnowYWpxOGNEMkRPTTJVQ3p5T0RmZmxZV3pKR0JaU1owVzBHQ2NhSFZwVmgvYkJYejFTbUJGd0xZYnd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1OTk2OTAyCWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpOTUhxTUp4RUZjbk1JcFZoRExhekR3dmxGRlc3MEpwWTR1TXI0S1lDYnVtNWpBTzZ5eFpHVnY4SEdWR3Ixa3E0bU9QcHpvREJjcmpUK0R1clBsMGZCZz09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker.app.tar.gz",
       "dmg": {
-        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.6.0/EmailTasker_0.6.0_universal.dmg"
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker_0.7.0_universal.dmg"
       }
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0o1dytWU2RpTHI2dzNCMUxWUEhmY0RlYnJtR1MzVXlTQTlHd0RqZDduY2JSYzFWcDJSNW41aUVUZUh5YkkzWWx3YmRJR0FvMllzYUtabVRRTlExZmdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NzgxNjk0CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpSTWlHSmNVVW04QUJMcmVyVVAwR0Y1bG9ZQVlxbnIrYUhLR3RNZkc3OFV1WWx5UHJYajJUekFLbFo1REttaXEwR2daNE9KOHk5S09wOFFYV2JpSFdCUT09Cg==",
-      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.6.0/EmailTasker.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0I0Z2Y1V1hKWkRTdTdxWnlIZDVTbXhPM0d4WnowYWpxOGNEMkRPTTJVQ3p5T0RmZmxZV3pKR0JaU1owVzBHQ2NhSFZwVmgvYkJYejFTbUJGd0xZYnd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1OTk2OTAyCWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpOTUhxTUp4RUZjbk1JcFZoRExhekR3dmxGRlc3MEpwWTR1TXI0S1lDYnVtNWpBTzZ5eFpHVnY4SEdWR3Ixa3E0bU9QcHpvREJjcmpUK0R1clBsMGZCZz09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker.app.tar.gz",
       "dmg": {
-        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.6.0/EmailTasker_0.6.0_universal.dmg"
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker_0.7.0_universal.dmg"
       }
     }
   }

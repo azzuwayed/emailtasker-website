@@ -4,10 +4,22 @@ Simple, customer-facing changes in EmailTasker releases.
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-08-06
+
+### Added
+
+- **Start free.** Your tasks and your calendar work without a membership. Open the app, plan your
+  day, and decide about Pro when you are ready.
+- **Pro is now labelled, not hidden.** Locked parts of the app say what a membership unlocks —
+  connecting a mailbox, the assistant, workflows, unsubscribing — instead of quietly disappearing.
+
 ### Changed
 
-- **Start free.** Your tasks and calendar work without a membership. Pro connects your mailbox,
-  turns email into tasks, and brings in the assistant.
+- **The assistant explains itself when it is locked** rather than going quiet.
+- **The work you already have stays yours.** Tasks and events remain readable if a membership lapses;
+  your mailbox needs Pro to reconnect.
+- **Membership status is now reported accurately** in Settings, including when a membership has
+  expired or payment is still pending.
 
 ## [0.6.0] - 2026-08-03
 
