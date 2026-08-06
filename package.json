@@ -8,7 +8,7 @@
     "check:site": "node scripts/check-site.mjs",
     "check:product": "node scripts/sync-product.mjs --check",
     "format": "prettier --write \"*.html\" \"*.js\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
-    "format:release": "prettier --write CHANGELOG.md updates.json product.json",
+    "format:release": "prettier --write CHANGELOG.md updates.json product.json index.html \"ar/index.html\"",
     "sync:product": "node scripts/sync-product.mjs"
   },
   "devDependencies": {

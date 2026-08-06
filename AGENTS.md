@@ -59,8 +59,10 @@ pnpm check
 pnpm format:release
 ```
 
-`pnpm format:release` formats only the generated updater manifest and public changelog before the
-release checkpoint gate.
+`pnpm format:release` formats everything the release checkpoint regenerates — the updater manifest,
+public changelog, product manifest, and both product pages — before the checkpoint gate. `pnpm
+sync:product` rewrites the pages unformatted, so anything it touches must be listed here or the gate
+fails on style alone.
 
 ## Key invariants
 
