@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "productId": "emailtasker",
-  "contentRevision": "5278b6e775ed0f7638c276fcc6bf314ca1f7851e807c5ecb5891e0ca8565b0f8",
+  "contentRevision": "2b21193573dbcdaaf3e944458a4209a0cfbdb9acfb090c98ad45aa0d33849a33",
   "manifest": {
     "schemaVersion": 1,
     "productId": "emailtasker",
@@ -28,23 +28,23 @@
         ]
       },
       "ar": {
-        "tag": "ابدأ بموجز صباحي، ثم حوّل البريد إلى يوم واضح وسهل الإدارة.",
-        "overview": "يجمع EmailTasker البريد والمهام والتقويمات في مساحة عمل أصلية على macOS. يهيئ الموجز الصباحي يومك، ويعمل المساعد بموافقات وتقييمات واضحة، ويساعدك التنظيف الموجّه على تقليل ضوضاء البريد بأمان مع إجراءات قابلة للتراجع.",
-        "audience": "المحترفون الذين يديرون أيامًا مزدحمة عبر حسابات Microsoft أو Google ويريدون خطة أوضح وصندوق وارد أهدأ.",
-        "accountSummary": "خطّط يومك من البريد والمهام والتقويم، بمساعدة ذكاء اصطناعي يحفظ بياناته على جهازك أولًا.",
-        "heroAlt": "موجز EmailTasker الصباحي مع التقويم والمهام ذات الأولوية وإرشادات المساعد.",
+        "tag": "ابدأ يومك بخلاصة واضحة، وحوّل رسائلك إلى خطوات قابلة للإنجاز.",
+        "overview": "يجمع EmailTasker بريدك ومهامك وتقويماتك في تطبيق واحد على macOS. تبدأ يومك بخلاصة مرتبة، وتنجز أعمالك بمساعدة ذكية، وتتخلص من الرسائل المتراكمة بخطوات بسيطة يمكنك التراجع عنها.",
+        "audience": "لمن يديرون أيامًا مزدحمة عبر حسابات Microsoft أو Google ويريدون أولويات أوضح وصندوق وارد أكثر هدوءًا.",
+        "accountSummary": "رتّب يومك بين البريد والمهام والتقويم، واستعن بمساعد ذكي يسهّل عليك إنجازها.",
+        "heroAlt": "الخلاصة الصباحية في EmailTasker، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد.",
         "highlights": [
           {
             "key": "brief",
-            "text": "ابدأ بموجز صباحي مركّز يستند إلى مهامك وتقويماتك."
+            "text": "ابدأ بخلاصة صباحية مرتبة تجمع مهامك ومواعيدك المهمة."
           },
           {
             "key": "assistant",
-            "text": "وافق على إجراءات المساعد وتراجع عن التغييرات القابلة للعكس وقيّم الإجابات لتحسين سير عملك."
+            "text": "دع المساعد ينجز معك، وراجع إجراءاته قبل تنفيذها، وتراجع عن أي تغيير متى احتجت."
           },
           {
             "key": "cleanup",
-            "text": "استخدم التنظيف الموجّه واقتراحات النظافة اليومية لتقليل الفوضى المتكررة بأمان."
+            "text": "نظّف صندوق الوارد خطوة بخطوة، وتخلّص من الرسائل المتكررة التي تشتت يومك."
           }
         ]
       }
@@ -54,7 +54,7 @@
         "path": "product/media/hero.webp",
         "alt": {
           "en": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
-          "ar": "موجز EmailTasker الصباحي مع التقويم والمهام ذات الأولوية وإرشادات المساعد."
+          "ar": "الخلاصة الصباحية في EmailTasker، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد."
         }
       },
       "screenshots": [
@@ -62,21 +62,21 @@
           "path": "product/media/cockpit-focus.webp",
           "alt": {
             "en": "EmailTasker Focus view with a timeline and compact priority columns.",
-            "ar": "واجهة التركيز في EmailTasker مع خط زمني وأعمدة أولوية مختصرة."
+            "ar": "وضع التركيز في EmailTasker، ويعرض الخط الزمني وأعمدة الأولويات بصورة مختصرة."
           }
         },
         {
           "path": "product/media/assistant.webp",
           "alt": {
             "en": "EmailTasker assistant response with task context and an approval state.",
-            "ar": "رد من مساعد EmailTasker يستند إلى سياق المهام ويعرض حالة الموافقة."
+            "ar": "رد من مساعد EmailTasker يستند إلى مهامك ويعرض إجراءً بانتظار موافقتك."
           }
         },
         {
           "path": "product/media/ai-memory-management.webp",
           "alt": {
             "en": "EmailTasker settings for assistant behavior, memory, and local-first controls.",
-            "ar": "إعدادات EmailTasker لسلوك المساعد والذاكرة وحفظ البيانات على الجهاز أولًا."
+            "ar": "إعدادات EmailTasker للتحكم في طريقة عمل المساعد وما يتذكره."
           }
         },
         {
