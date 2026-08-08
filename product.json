@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "productId": "emailtasker",
-  "contentRevision": "dcfbb2f5d5a9312f87be1fbe46255239a4e86b4bac855128984e019fd37d6701",
+  "contentRevision": "e8c0cdfbcf12a8973cb7733e010dadf615195fa47bd7314440a7a1f39206a594",
   "manifest": {
-    "schemaVersion": 1,
+    "schemaVersion": 2,
     "productId": "emailtasker",
     "locales": {
       "en": {
@@ -51,7 +51,10 @@
     },
     "media": {
       "hero": {
-        "path": "product/media/hero.webp",
+        "key": "hero",
+        "paths": {
+          "default": "product/media/hero.webp"
+        },
         "alt": {
           "en": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
           "ar": "الخلاصة الصباحية في EmailTasker، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد."
@@ -59,28 +62,40 @@
       },
       "screenshots": [
         {
-          "path": "product/media/cockpit-focus.webp",
+          "key": "cockpit-focus",
+          "paths": {
+            "default": "product/media/cockpit-focus.webp"
+          },
           "alt": {
             "en": "EmailTasker Focus view with a timeline and compact priority columns.",
             "ar": "وضع التركيز في EmailTasker، ويعرض الخط الزمني وأعمدة الأولويات بصورة مختصرة."
           }
         },
         {
-          "path": "product/media/assistant.webp",
+          "key": "assistant",
+          "paths": {
+            "default": "product/media/assistant.webp"
+          },
           "alt": {
             "en": "EmailTasker assistant response with task context and an approval state.",
             "ar": "رد من مساعد EmailTasker يستند إلى مهامك ويعرض إجراءً بانتظار موافقتك."
           }
         },
         {
-          "path": "product/media/ai-memory-management.webp",
+          "key": "ai-memory-management",
+          "paths": {
+            "default": "product/media/ai-memory-management.webp"
+          },
           "alt": {
             "en": "EmailTasker settings for assistant behavior, memory, and local-first controls.",
             "ar": "إعدادات EmailTasker للتحكم في طريقة عمل المساعد وما يتذكره."
           }
         },
         {
-          "path": "product/media/all-clear.webp",
+          "key": "all-clear",
+          "paths": {
+            "default": "product/media/all-clear.webp"
+          },
           "alt": {
             "en": "EmailTasker all-clear state after the day’s tasks are handled.",
             "ar": "حالة إنجاز اليوم في EmailTasker بعد التعامل مع المهام."

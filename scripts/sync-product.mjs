@@ -21,11 +21,15 @@ function fail(message) {
   throw new Error(`sync-product: ${message}`);
 }
 
+function byCodeUnit(left, right) {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+
 function canonicalJson(value) {
   if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
   if (value !== null && typeof value === "object") {
     return `{${Object.entries(value)
-      .sort(([left], [right]) => left.localeCompare(right))
+      .sort(([left], [right]) => byCodeUnit(left, right))
       .map(([key, item]) => `${JSON.stringify(key)}:${canonicalJson(item)}`)
       .join(",")}}`;
   }
@@ -49,10 +53,21 @@ function replaceElement(html, attribute, value, label) {
 }
 
 function mediaPaths(manifest) {
-  return [
-    ...(manifest.media.hero ? [manifest.media.hero.path] : []),
-    ...manifest.media.screenshots.map((item) => item.path),
-  ].sort();
+  const items = [
+    ...(manifest.media.hero ? [manifest.media.hero] : []),
+    ...manifest.media.screenshots,
+  ];
+  const paths = new Set();
+  for (const item of items) {
+    if (manifest.schemaVersion === 1) {
+      paths.add(item.path);
+      continue;
+    }
+    paths.add(item.paths.default);
+    if (item.paths.en) paths.add(item.paths.en);
+    if (item.paths.ar) paths.add(item.paths.ar);
+  }
+  return [...paths].sort(byCodeUnit);
 }
 
 function mimeType(path) {
@@ -67,7 +82,9 @@ async function publication() {
   const manifest = JSON.parse(
     await readFile(join(sourceRoot, "product", "manifest.json"), "utf8"),
   );
-  if (manifest.schemaVersion !== 1) fail("schemaVersion must equal 1");
+  if (manifest.schemaVersion !== 1 && manifest.schemaVersion !== 2) {
+    fail("schemaVersion must equal 1 or 2");
+  }
   if (manifest.productId !== expectedProductId) {
     fail(`expected productId ${expectedProductId}, got ${manifest.productId}`);
   }
