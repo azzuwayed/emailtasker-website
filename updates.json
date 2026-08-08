@@ -1,20 +1,20 @@
 {
-  "version": "0.7.0",
-  "notes": "### Added\n\n- **Start free.** Your tasks and your calendar work without a membership. Open the app, plan your\n  day, and decide about Pro when you are ready.\n- **Pro is now labelled, not hidden.** Locked parts of the app say what a membership unlocks —\n  connecting a mailbox, the assistant, workflows, unsubscribing — instead of quietly disappearing.\n\n### Changed\n\n- **The assistant explains itself when it is locked** rather than going quiet.\n- **The work you already have stays yours.** Tasks and events remain readable if a membership lapses;\n  your mailbox needs Pro to reconnect.\n- **Membership status is now reported accurately** in Settings, including when a membership has\n  expired or payment is still pending.",
-  "pub_date": "2026-08-06T00:00:00Z",
+  "version": "1.0.0",
+  "notes": "### Changed\n\n- **The app opens straight to your day.** A device that verified its membership recently no longer\n  waits on the \"Checking membership access\" screen at launch; verification finishes quietly in the\n  background.",
+  "pub_date": "2026-08-08T00:00:00Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0I0Z2Y1V1hKWkRTdTdxWnlIZDVTbXhPM0d4WnowYWpxOGNEMkRPTTJVQ3p5T0RmZmxZV3pKR0JaU1owVzBHQ2NhSFZwVmgvYkJYejFTbUJGd0xZYnd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1OTk2OTAyCWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpOTUhxTUp4RUZjbk1JcFZoRExhekR3dmxGRlc3MEpwWTR1TXI0S1lDYnVtNWpBTzZ5eFpHVnY4SEdWR3Ixa3E0bU9QcHpvREJjcmpUK0R1clBsMGZCZz09Cg==",
-      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0VQNUlZQUZYekN5VW9pbGdIZTQwMUxLR2NVOEVtZUs0MTl2eWY3NDF3bUZRQUp5RjFpbE96c2oyVjFFNFVJdGN1c3FjdG1RN2dYaUR3c2hLMnY4Umc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2MjE1Mzc0CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpnai9TY3Fqc1ZPcFhTQkVMeGV5YUQ3OHI3eGdSVWFJY2UxWUtDQkV1anZ4N21KdmJxbkdwdkJiK0xHeU1FbHZsUWV4VXhHZDBOK0ZTQjdlS3dIVlNDQT09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker.app.tar.gz",
       "dmg": {
-        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker_0.7.0_universal.dmg"
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker_1.0.0_universal.dmg"
       }
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0I0Z2Y1V1hKWkRTdTdxWnlIZDVTbXhPM0d4WnowYWpxOGNEMkRPTTJVQ3p5T0RmZmxZV3pKR0JaU1owVzBHQ2NhSFZwVmgvYkJYejFTbUJGd0xZYnd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1OTk2OTAyCWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpOTUhxTUp4RUZjbk1JcFZoRExhekR3dmxGRlc3MEpwWTR1TXI0S1lDYnVtNWpBTzZ5eFpHVnY4SEdWR3Ixa3E0bU9QcHpvREJjcmpUK0R1clBsMGZCZz09Cg==",
-      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0VQNUlZQUZYekN5VW9pbGdIZTQwMUxLR2NVOEVtZUs0MTl2eWY3NDF3bUZRQUp5RjFpbE96c2oyVjFFNFVJdGN1c3FjdG1RN2dYaUR3c2hLMnY4Umc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2MjE1Mzc0CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpnai9TY3Fqc1ZPcFhTQkVMeGV5YUQ3OHI3eGdSVWFJY2UxWUtDQkV1anZ4N21KdmJxbkdwdkJiK0xHeU1FbHZsUWV4VXhHZDBOK0ZTQjdlS3dIVlNDQT09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker.app.tar.gz",
       "dmg": {
-        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v0.7.0/EmailTasker_0.7.0_universal.dmg"
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker_1.0.0_universal.dmg"
       }
     }
   }

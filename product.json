@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "productId": "emailtasker",
-  "contentRevision": "2b21193573dbcdaaf3e944458a4209a0cfbdb9acfb090c98ad45aa0d33849a33",
+  "contentRevision": "dcfbb2f5d5a9312f87be1fbe46255239a4e86b4bac855128984e019fd37d6701",
   "manifest": {
     "schemaVersion": 1,
     "productId": "emailtasker",
     "locales": {
       "en": {
         "tag": "Start with a morning brief, then turn email into a clear, manageable day.",
-        "overview": "EmailTasker brings email, tasks, and calendars into one native macOS workspace. Its morning brief prepares your day, the assistant works with approvals and ratings, and guided cleanup helps you safely reduce inbox noise with actions you can undo.",
-        "audience": "Professionals managing busy days across Microsoft or Google accounts who want a clearer plan and a calmer inbox.",
+        "overview": "EmailTasker brings Microsoft email, tasks, and calendars into one native macOS workspace. Plan locally for free, start Pro days with a focused morning brief, and work with an assistant whose reversible actions can be undone.",
+        "audience": "Professionals managing busy days and Microsoft mailboxes who want a clearer plan and a calmer inbox.",
         "accountSummary": "Plan your day across email, tasks, and calendars with a local-first AI assistant.",
         "heroAlt": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
         "highlights": [
@@ -22,15 +22,15 @@
             "text": "Approve assistant actions, undo reversible changes, and rate answers to improve your workflow."
           },
           {
-            "key": "cleanup",
-            "text": "Use guided inbox cleanup and daily hygiene suggestions to reduce recurring clutter safely."
+            "key": "email-tasks",
+            "text": "Turn actionable Microsoft messages into durable tasks, with local rules available when AI is off."
           }
         ]
       },
       "ar": {
         "tag": "ابدأ يومك بخلاصة واضحة، وحوّل رسائلك إلى خطوات قابلة للإنجاز.",
-        "overview": "يجمع EmailTasker بريدك ومهامك وتقويماتك في تطبيق واحد على macOS. تبدأ يومك بخلاصة مرتبة، وتنجز أعمالك بمساعدة ذكية، وتتخلص من الرسائل المتراكمة بخطوات بسيطة يمكنك التراجع عنها.",
-        "audience": "لمن يديرون أيامًا مزدحمة عبر حسابات Microsoft أو Google ويريدون أولويات أوضح وصندوق وارد أكثر هدوءًا.",
+        "overview": "يجمع EmailTasker بريد Microsoft ومهامك وتقويماتك في تطبيق واحد على macOS. خطط محليًا مجانًا، وابدأ يومك مع Pro بخلاصة مرتبة، وأنجز أعمالك بمساعدة ذكية تتيح لك التراجع عن التغييرات.",
+        "audience": "لمن يديرون أيامًا مزدحمة وصناديق بريد Microsoft ويريدون أولويات أوضح وصندوق وارد أكثر هدوءًا.",
         "accountSummary": "رتّب يومك بين البريد والمهام والتقويم، واستعن بمساعد ذكي يسهّل عليك إنجازها.",
         "heroAlt": "الخلاصة الصباحية في EmailTasker، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد.",
         "highlights": [
@@ -43,8 +43,8 @@
             "text": "دع المساعد ينجز معك، وراجع إجراءاته قبل تنفيذها، وتراجع عن أي تغيير متى احتجت."
           },
           {
-            "key": "cleanup",
-            "text": "نظّف صندوق الوارد خطوة بخطوة، وتخلّص من الرسائل المتكررة التي تشتت يومك."
+            "key": "email-tasks",
+            "text": "حوّل رسائل Microsoft المهمة إلى مهام دائمة، واستمر بالقواعد المحلية عند إيقاف الذكاء الاصطناعي."
           }
         ]
       }
