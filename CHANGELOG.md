@@ -4,14 +4,6 @@ Simple, customer-facing changes in EmailTasker releases.
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-08-08
-
-### Changed
-
-- **The app opens straight to your day.** A device that verified its membership recently no longer
-  waits on the "Checking membership access" screen at launch; verification finishes quietly in the
-  background.
-
 ## [0.7.0] - 2026-08-06
 
 ### Added
