@@ -2,6 +2,11 @@
 
 Simple, customer-facing changes in EmailTasker releases.
 
+Some of what follows is still open to invited accounts only. Subscriptions and inbox cleanup,
+Workflows, Task Rules, connected knowledge, assistant Work jobs, and Google accounts are being
+finished with a small group first, and each will be announced here when it opens to everyone.
+Everything else described below is available with a membership.
+
 ## [Unreleased]
 
 ## [1.0.0] - 2026-08-08
@@ -19,7 +24,7 @@ Simple, customer-facing changes in EmailTasker releases.
 - **Start free.** Your tasks and your calendar work without a membership. Open the app, plan your
   day, and decide about Pro when you are ready.
 - **Pro is now labelled, not hidden.** Locked parts of the app say what a membership unlocks —
-  connecting a mailbox, the assistant, workflows, unsubscribing — instead of quietly disappearing.
+  connecting a mailbox, the assistant, turning email into tasks — instead of quietly disappearing.
 
 ### Changed
 
@@ -61,26 +66,26 @@ Simple, customer-facing changes in EmailTasker releases.
 
 ### Added
 
-- **Google accounts, alongside Microsoft.** Connect a Gmail account and everything works the same
-  way — mail becomes tasks, your primary Google calendar appears in Today, and archiving, trashing,
-  or unsubscribing happens where the message actually lives. Connect one, both, or neither.
+- **Google accounts, alongside Microsoft, for invited accounts.** Connect a Gmail account and
+  everything works the same way — mail becomes tasks, your primary Google calendar appears in Today,
+  and archiving or trashing happens where the message actually lives.
 - **A guided first run.** Your first time in Today now walks you through creating a piece of work,
   connecting a mailbox if you want one, and trying the assistant — and picks up where you left off if
   you close the app partway.
 - **Read your mail without leaving EmailTasker.** Open the message behind a task from either account,
-  download an attachment, and archive, trash, or unsubscribe right there.
+  download an attachment, and archive or trash it right there.
 - **A quick look at recent mail.** See what has arrived across your connected accounts, what is still
   unread, and where each message ended up as work.
 - **A rebuilt workspace.** Moving between Today, the assistant, subscriptions, and task rules now
   happens in the window's own title bar, and EmailTasker asks before it leaves unfinished work
   behind.
-- **Settings has its own window.** Accounts, the assistant, privacy, and recovery each have a proper
-  home, and the actions that remove something are clearer about what they do.
+- **Settings moved into a window of its own.** Accounts, the assistant, privacy, and recovery each
+  got a proper home, and the actions that remove something became clearer about what they do.
 - **Task rules have a home of their own** — a quieter editor, mistakes reported where you make them,
   and dates shown the way you read them.
-- **A Subscriptions workspace that shows what is actually filling your inbox.** EmailTasker groups
-  newsletters and automated senders, shows how much of your inbox each one accounts for, and
-  unsubscribes for you where the sender supports it.
+- **A Subscriptions workspace, for invited accounts, that shows what is actually filling your inbox.**
+  EmailTasker groups newsletters and automated senders, shows how much of your inbox each one accounts
+  for, and unsubscribes for you where the sender supports it.
 - **Reviewed inbox cleanup.** Preview exactly which messages a cleanup would move to Trash, confirm
   the batch, and see a clear summary of what was moved and what was skipped.
 - **Every message from one sender, in one place.** Page through what a sender has sent you, filter to
