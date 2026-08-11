@@ -9,6 +9,27 @@ Everything else described below is available with a membership.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-11
+
+### Changed
+
+- **One window for your whole day.** Settings now opens inside the main window instead of a second
+  one, so the workspace you were using stays exactly where you left it while you change a setting.
+- **A new look for the assistant.** The launcher in the corner is now a lit orb that breathes while
+  the assistant is working.
+- **AI task planning, and an assistant that acts.** New and reset setups use AI for Task
+  Intelligence, and the assistant applies reversible changes right away with Undo. Sending or
+  deleting starts a short countdown you can cancel, and calmer modes remain available in Settings.
+- **Cleaner task titles.** A task made from a reply no longer opens with quoted text, a signature,
+  or a footer — just the words the sender actually wrote.
+
+### Fixed
+
+- **The assistant introduces itself accurately.** Asking who it is or what it can do now gets mail,
+  calendar, and task help back — not an unrelated feature.
+- **Send picks up where it left off.** When a send ended without a clear result, choosing Send again
+  now finishes it instead of doing nothing.
+
 ## [1.0.0] - 2026-08-08
 
 ### Changed

@@ -1,20 +1,20 @@
 {
-  "version": "1.0.0",
-  "notes": "### Changed\n\n- **The app opens straight to your day.** A device that verified its membership recently no longer\n  waits on the \"Checking membership access\" screen at launch; verification finishes quietly in the\n  background.",
-  "pub_date": "2026-08-08T00:00:00Z",
+  "version": "1.1.0",
+  "notes": "### Changed\n\n- **One window for your whole day.** Settings now opens inside the main window instead of a second\n  one, so the workspace you were using stays exactly where you left it while you change a setting.\n- **A new look for the assistant.** The launcher in the corner is now a lit orb that breathes while\n  the assistant is working.\n- **AI task planning, and an assistant that acts.** New and reset setups use AI for Task\n  Intelligence, and the assistant applies reversible changes right away with Undo. Sending or\n  deleting starts a short countdown you can cancel, and calmer modes remain available in Settings.\n- **Cleaner task titles.** A task made from a reply no longer opens with quoted text, a signature,\n  or a footer — just the words the sender actually wrote.\n\n### Fixed\n\n- **The assistant introduces itself accurately.** Asking who it is or what it can do now gets mail,\n  calendar, and task help back — not an unrelated feature.\n- **Send picks up where it left off.** When a send ended without a clear result, choosing Send again\n  now finishes it instead of doing nothing.",
+  "pub_date": "2026-08-11T00:00:00Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0VQNUlZQUZYekN5VW9pbGdIZTQwMUxLR2NVOEVtZUs0MTl2eWY3NDF3bUZRQUp5RjFpbE96c2oyVjFFNFVJdGN1c3FjdG1RN2dYaUR3c2hLMnY4Umc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2MjE1Mzc0CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpnai9TY3Fqc1ZPcFhTQkVMeGV5YUQ3OHI3eGdSVWFJY2UxWUtDQkV1anZ4N21KdmJxbkdwdkJiK0xHeU1FbHZsUWV4VXhHZDBOK0ZTQjdlS3dIVlNDQT09Cg==",
-      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0NvZWFTQlhFVi9qS3pDZy9HZE5SaG5pSEdiSWpJWXNsMllzaXRYOGNRVlljZEdlQWVSaWV5V2ZTMVh1M1RsSjl0aXhXeSt0T21sQUV5MUVId0NSTUFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDgwNjk1CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpTdzhmS1BNZjdqbmVGTzVlU1MwY1IyZElHMHVkanNJUkFDcC94aEdCRmU1WmZTS2R2RWVGdjV6RjNMMUM4aWp2aGJrRUgvUU16TVNnMG1FWWZGY2pEUT09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.1.0/EmailTasker.app.tar.gz",
       "dmg": {
-        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker_1.0.0_universal.dmg"
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.1.0/EmailTasker_1.1.0_universal.dmg"
       }
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0VQNUlZQUZYekN5VW9pbGdIZTQwMUxLR2NVOEVtZUs0MTl2eWY3NDF3bUZRQUp5RjFpbE96c2oyVjFFNFVJdGN1c3FjdG1RN2dYaUR3c2hLMnY4Umc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2MjE1Mzc0CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpnai9TY3Fqc1ZPcFhTQkVMeGV5YUQ3OHI3eGdSVWFJY2UxWUtDQkV1anZ4N21KdmJxbkdwdkJiK0xHeU1FbHZsUWV4VXhHZDBOK0ZTQjdlS3dIVlNDQT09Cg==",
-      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0NvZWFTQlhFVi9qS3pDZy9HZE5SaG5pSEdiSWpJWXNsMllzaXRYOGNRVlljZEdlQWVSaWV5V2ZTMVh1M1RsSjl0aXhXeSt0T21sQUV5MUVId0NSTUFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NDgwNjk1CWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5negpTdzhmS1BNZjdqbmVGTzVlU1MwY1IyZElHMHVkanNJUkFDcC94aEdCRmU1WmZTS2R2RWVGdjV6RjNMMUM4aWp2aGJrRUgvUU16TVNnMG1FWWZGY2pEUT09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.1.0/EmailTasker.app.tar.gz",
       "dmg": {
-        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.0.0/EmailTasker_1.0.0_universal.dmg"
+        "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.1.0/EmailTasker_1.1.0_universal.dmg"
       }
     }
   }
