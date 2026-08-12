@@ -9,6 +9,33 @@ Everything else described below is available with a membership.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-08-12
+
+### Changed
+
+- **The app opens faster.** EmailTasker now loads about half as much before it can draw its first
+  screen, and only fetches the parts of the app you actually open. Your language loads on its own
+  rather than both languages loading every time.
+- **The assistant feels smoother during long conversations.** Replies no longer slow down as a
+  conversation grows, and countdown timers stopped redrawing far more often than they showed.
+- **Large mailboxes recover much faster.** When a mail provider asks EmailTasker to start its sync
+  over, catching up now takes a fraction of the time it did on a big mailbox.
+- **Making a backup no longer freezes the app.** Copying your data while a snapshot is taken now
+  happens out of the way of everything else.
+
+### Fixed
+
+- **The keyboard now shows you where you are.** Moving through the app with Tab draws a clear focus
+  outline. Nothing changes when you use a mouse.
+- **Dialogs are usable without a mouse.** Opening one moves you into it, Tab stays inside it, and
+  closing it returns you to where you were. VoiceOver now announces dialogs when they open.
+- **A message you opened can be closed with Escape.** Previously the reader could only be dismissed
+  by clicking.
+- **The assistant's reply is now read aloud by VoiceOver** as it arrives.
+- **Newsletters can be opened from the keyboard** in the subscriptions list.
+- **The success animation that never appeared has been replaced** with the check mark that was
+  already shown to people who prefer reduced motion.
+
 ## [1.1.0] - 2026-08-11
 
 ### Changed

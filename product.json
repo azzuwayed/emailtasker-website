@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "productId": "emailtasker",
-  "contentRevision": "e8c0cdfbcf12a8973cb7733e010dadf615195fa47bd7314440a7a1f39206a594",
+  "contentRevision": "24ac098d53f596e999570b25ffb78c7fd43074ab30b8c97574e0d173d1fc80eb",
   "manifest": {
     "schemaVersion": 2,
     "productId": "emailtasker",
@@ -10,7 +10,7 @@
         "tag": "Start with a morning brief, then turn email into a clear, manageable day.",
         "overview": "EmailTasker brings Microsoft email, tasks, and calendars into one native macOS workspace. Plan locally for free, start Pro days with a focused morning brief, and work with an assistant whose reversible actions can be undone.",
         "audience": "Professionals managing busy days and Microsoft mailboxes who want a clearer plan and a calmer inbox.",
-        "accountSummary": "Plan your day across email, tasks, and calendars with a local-first AI assistant.",
+        "accountSummary": "An AI secretary for your day: Microsoft email becomes tasks, with your calendar and assistant in one place.",
         "heroAlt": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
         "highlights": [
           {
@@ -29,10 +29,10 @@
       },
       "ar": {
         "tag": "ابدأ يومك بخلاصة واضحة، وحوّل رسائلك إلى خطوات قابلة للإنجاز.",
-        "overview": "يجمع EmailTasker بريد Microsoft ومهامك وتقويماتك في تطبيق واحد على macOS. خطط محليًا مجانًا، وابدأ يومك مع Pro بخلاصة مرتبة، وأنجز أعمالك بمساعدة ذكية تتيح لك التراجع عن التغييرات.",
+        "overview": "يجمع ايميل تاسكر بريد Microsoft ومهامك وتقويماتك في تطبيق واحد على macOS. خطط محليًا مجانًا، وابدأ يومك مع Pro بخلاصة مرتبة، وأنجز أعمالك بمساعدة ذكية تتيح لك التراجع عن التغييرات.",
         "audience": "لمن يديرون أيامًا مزدحمة وصناديق بريد Microsoft ويريدون أولويات أوضح وصندوق وارد أكثر هدوءًا.",
-        "accountSummary": "رتّب يومك بين البريد والمهام والتقويم، واستعن بمساعد ذكي يسهّل عليك إنجازها.",
-        "heroAlt": "الخلاصة الصباحية في EmailTasker، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد.",
+        "accountSummary": "سكرتير بالذكاء الاصطناعي ليومك: تتحول رسائل Microsoft إلى مهام، مع تقويمك ومساعدك في مكان واحد.",
+        "heroAlt": "الخلاصة الصباحية في ايميل تاسكر، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد.",
         "highlights": [
           {
             "key": "brief",
@@ -57,7 +57,7 @@
         },
         "alt": {
           "en": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
-          "ar": "الخلاصة الصباحية في EmailTasker، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد."
+          "ar": "الخلاصة الصباحية في ايميل تاسكر، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد."
         }
       },
       "screenshots": [
@@ -68,7 +68,7 @@
           },
           "alt": {
             "en": "EmailTasker Focus view with a timeline and compact priority columns.",
-            "ar": "وضع التركيز في EmailTasker، ويعرض الخط الزمني وأعمدة الأولويات بصورة مختصرة."
+            "ar": "وضع التركيز في ايميل تاسكر، ويعرض الخط الزمني وأعمدة الأولويات بصورة مختصرة."
           }
         },
         {
@@ -78,7 +78,7 @@
           },
           "alt": {
             "en": "EmailTasker assistant response with task context and an approval state.",
-            "ar": "رد من مساعد EmailTasker يستند إلى مهامك ويعرض إجراءً بانتظار موافقتك."
+            "ar": "رد من مساعد ايميل تاسكر يستند إلى مهامك ويعرض إجراءً بانتظار موافقتك."
           }
         },
         {
@@ -88,7 +88,7 @@
           },
           "alt": {
             "en": "EmailTasker settings for assistant behavior, memory, and local-first controls.",
-            "ar": "إعدادات EmailTasker للتحكم في طريقة عمل المساعد وما يتذكره."
+            "ar": "إعدادات ايميل تاسكر للتحكم في طريقة عمل المساعد وما يتذكره."
           }
         },
         {
@@ -98,7 +98,7 @@
           },
           "alt": {
             "en": "EmailTasker all-clear state after the day’s tasks are handled.",
-            "ar": "حالة إنجاز اليوم في EmailTasker بعد التعامل مع المهام."
+            "ar": "حالة إنجاز اليوم في ايميل تاسكر بعد التعامل مع المهام."
           }
         }
       ]
