@@ -1,21 +1,26 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
+import {
+  contentRevisionInput,
+  imageDimensions,
+  localePages,
+  mediaPaths,
+  mimeType,
+  pageDirectives,
+  publishedMediaPath,
+  validateManifest,
+  verifyPage,
+} from "./product-model.mjs";
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const failures = [];
-const htmlFiles = [
-  path.join(root, "index.html"),
-  path.join(root, "ar", "index.html"),
-];
-const requiredScreenshots = [
-  "assets/screenshots/cockpit-dark-mock.webp",
-  "assets/screenshots/cockpit-focus.webp",
-  "assets/screenshots/assistant.webp",
-  "assets/screenshots/ai-memory-management.webp",
-  "assets/screenshots/all-clear-mock.webp",
-];
+const htmlFiles = Object.values(localePages).map((config) =>
+  path.join(root, config.page),
+);
 
 function relative(file) {
   return path.relative(root, file);
@@ -23,6 +28,51 @@ function relative(file) {
 
 function read(file) {
   return fs.readFileSync(file, "utf8");
+}
+
+/** Runs a unit of the shared model, turning its throw into one failure line. */
+function collect(label, run) {
+  try {
+    return run();
+  } catch (error) {
+    failures.push(`${label}: ${error.message}`);
+    return undefined;
+  }
+}
+
+/** Reads the published bytes each revisioned path must resolve to. */
+function productMedia(product) {
+  const paths = collect("product.json", () => mediaPaths(product.manifest));
+  const media = [];
+  for (const sourcePath of paths ?? []) {
+    const relativePath = publishedMediaPath(
+      product.contentRevision,
+      sourcePath,
+    );
+    const file = path.join(root, relativePath);
+    if (!fs.existsSync(file)) {
+      failures.push(`missing revisioned product media ${relativePath}`);
+      continue;
+    }
+    const bytes = fs.readFileSync(file);
+    if (bytes.length === 0) {
+      failures.push(`empty revisioned product media ${relativePath}`);
+      continue;
+    }
+    const shape = collect(`product.json: ${sourcePath}`, () => ({
+      mimeType: mimeType(sourcePath),
+      ...imageDimensions(bytes, sourcePath),
+    }));
+    if (!shape) continue;
+    media.push({
+      path: sourcePath,
+      relativePath,
+      bytes: bytes.length,
+      sha256: createHash("sha256").update(bytes).digest("hex"),
+      ...shape,
+    });
+  }
+  return media;
 }
 
 async function resolvedDownloadHref(script, manifest) {
@@ -55,6 +105,41 @@ function localTarget(file, value) {
     : target;
   if (!fs.existsSync(resolved)) {
     failures.push(`${relative(file)}: missing local target ${value}`);
+  }
+}
+
+let product;
+try {
+  product = JSON.parse(read(path.join(root, "product.json")));
+  if (
+    product.schemaVersion !== 1 ||
+    product.productId !== "emailtasker" ||
+    !/^[a-f0-9]{64}$/.test(product.contentRevision) ||
+    product.manifest?.productId !== product.productId
+  ) {
+    failures.push("product.json: invalid publication envelope");
+  }
+} catch (error) {
+  failures.push(`product.json: invalid JSON: ${error.message}`);
+}
+
+const media = product?.manifest ? productMedia(product) : [];
+if (product?.manifest && media.length > 0) {
+  const revision = createHash("sha256")
+    .update(contentRevisionInput(product.manifest, media))
+    .digest("hex");
+  if (revision !== product.contentRevision) {
+    failures.push(
+      "product.json: revision does not match the manifest and published media",
+    );
+  }
+}
+
+if (product?.manifest) {
+  for (const problem of collect("product.json", () =>
+    validateManifest(product.manifest, media),
+  ) ?? []) {
+    failures.push(`product.json: ${problem}`);
   }
 }
 
@@ -109,6 +194,18 @@ for (const file of htmlFiles) {
   }
 }
 
+if (product?.manifest) {
+  for (const [locale, config] of Object.entries(localePages)) {
+    const problems = collect(config.page, () =>
+      verifyPage(
+        read(path.join(root, config.page)),
+        pageDirectives(product, media, locale),
+      ),
+    );
+    failures.push(...(problems ?? []));
+  }
+}
+
 const english = read(htmlFiles[0]);
 const arabic = read(htmlFiles[1]);
 for (const expected of [
@@ -141,15 +238,6 @@ for (const expected of [
 ]) {
   if (!arabic.includes(expected))
     failures.push(`ar/index.html: missing ${expected}`);
-}
-
-for (const screenshot of requiredScreenshots) {
-  const file = path.join(root, screenshot);
-  if (!fs.existsSync(file)) {
-    failures.push(`missing Abdullah-approved product screenshot ${screenshot}`);
-  } else if (fs.statSync(file).size === 0) {
-    failures.push(`empty screenshot ${screenshot}`);
-  }
 }
 
 for (const expected of [
@@ -217,5 +305,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "site check passed: EN/AR pages, public downloads, localized Hub handoffs, product screenshots, metadata, and updater host",
+  "site check passed: EN/AR pages, manifest-derived SEO and media, public downloads, localized Hub handoffs, and updater host",
 );

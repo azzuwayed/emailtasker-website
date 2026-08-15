@@ -1,50 +1,60 @@
 {
   "schemaVersion": 1,
   "productId": "emailtasker",
-  "contentRevision": "24ac098d53f596e999570b25ffb78c7fd43074ab30b8c97574e0d173d1fc80eb",
+  "contentRevision": "d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85",
   "manifest": {
-    "schemaVersion": 2,
+    "schemaVersion": 3,
     "productId": "emailtasker",
     "locales": {
       "en": {
-        "tag": "Start with a morning brief, then turn email into a clear, manageable day.",
-        "overview": "EmailTasker brings Microsoft email, tasks, and calendars into one native macOS workspace. Plan locally for free, start Pro days with a focused morning brief, and work with an assistant whose reversible actions can be undone.",
+        "displayName": "EmailTasker",
+        "seo": {
+          "title": "EmailTasker — AI secretary for your day",
+          "description": "EmailTasker is your AI secretary for the day: turn Microsoft email into tasks, keep Today focused, and plan what comes next."
+        },
+        "tag": "Your AI secretary for the day.",
+        "overview": "EmailTasker turns Microsoft email into tasks automatically and keeps Today focused on work planned or due today. Plan locally for free, and use Pro for Microsoft mail, Mailing Lists, Morning Brief, and an assistant whose reversible actions stay visible and undoable.",
         "audience": "Professionals managing busy days and Microsoft mailboxes who want a clearer plan and a calmer inbox.",
         "accountSummary": "An AI secretary for your day: Microsoft email becomes tasks, with your calendar and assistant in one place.",
-        "heroAlt": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
+        "heroAlt": "EmailTasker Today workspace with Needs Attention, work planned for today, and assistant guidance.",
         "highlights": [
           {
             "key": "brief",
-            "text": "Begin with a focused morning brief drawn from your tasks and calendars."
+            "text": "Keep Today for work planned or due today, with missed plans separated into Needs Attention."
           },
           {
             "key": "assistant",
-            "text": "Approve assistant actions, undo reversible changes, and rate answers to improve your workflow."
+            "text": "Ask your AI secretary what matters, inspect its actions, and undo reversible changes."
           },
           {
             "key": "email-tasks",
-            "text": "Turn actionable Microsoft messages into durable tasks, with local rules available when AI is off."
+            "text": "Turn actionable Microsoft messages into durable tasks and review Mailing Lists before unsubscribing."
           }
         ]
       },
       "ar": {
-        "tag": "ابدأ يومك بخلاصة واضحة، وحوّل رسائلك إلى خطوات قابلة للإنجاز.",
-        "overview": "يجمع ايميل تاسكر بريد Microsoft ومهامك وتقويماتك في تطبيق واحد على macOS. خطط محليًا مجانًا، وابدأ يومك مع Pro بخلاصة مرتبة، وأنجز أعمالك بمساعدة ذكية تتيح لك التراجع عن التغييرات.",
+        "displayName": "ايميل تاسكر",
+        "seo": {
+          "title": "ايميل تاسكر — سكرتير بالذكاء الاصطناعي",
+          "description": "ايميل تاسكر سكرتيرك بالذكاء الاصطناعي ليومك: يحوّل رسائل Microsoft إلى مهام، ويُبقي «اليوم» واضحًا، وينظّم ما بعده في «الخطة»."
+        },
+        "tag": "سكرتيرك بالذكاء الاصطناعي يرتّب لك يومك.",
+        "overview": "يحوّل ايميل تاسكر رسائل Microsoft إلى مهام تلقائيًا، ويُبقي «اليوم» مخصصًا لما خططت له أو يحين موعده اليوم. خطط محليًا مجانًا، واستخدم Pro لبريد Microsoft والقوائم البريدية والخلاصة الصباحية ومساعد تبقى إجراءاته ظاهرة وقابلة للتراجع.",
         "audience": "لمن يديرون أيامًا مزدحمة وصناديق بريد Microsoft ويريدون أولويات أوضح وصندوق وارد أكثر هدوءًا.",
         "accountSummary": "سكرتير بالذكاء الاصطناعي ليومك: تتحول رسائل Microsoft إلى مهام، مع تقويمك ومساعدك في مكان واحد.",
-        "heroAlt": "الخلاصة الصباحية في ايميل تاسكر، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد.",
+        "heroAlt": "مساحة «اليوم» في ايميل تاسكر، وتعرض ما يحتاج الانتباه وما خُطط له اليوم وإرشادات المساعد.",
         "highlights": [
           {
             "key": "brief",
-            "text": "ابدأ بخلاصة صباحية مرتبة تجمع مهامك ومواعيدك المهمة."
+            "text": "أبقِ «اليوم» لما خُطط له أو يحين موعده اليوم، وافصل الخطط الفائتة ضمن «يحتاج انتباهك»."
           },
           {
             "key": "assistant",
-            "text": "دع المساعد ينجز معك، وراجع إجراءاته قبل تنفيذها، وتراجع عن أي تغيير متى احتجت."
+            "text": "اسأل سكرتيرك بالذكاء الاصطناعي عما يهم، وراجع إجراءاته، وتراجع عن التغييرات القابلة للعكس."
           },
           {
             "key": "email-tasks",
-            "text": "حوّل رسائل Microsoft المهمة إلى مهام دائمة، واستمر بالقواعد المحلية عند إيقاف الذكاء الاصطناعي."
+            "text": "حوّل رسائل Microsoft المهمة إلى مهام دائمة، وراجع القوائم البريدية قبل إلغاء الاشتراك."
           }
         ]
       }
@@ -56,8 +66,19 @@
           "default": "product/media/hero.webp"
         },
         "alt": {
-          "en": "EmailTasker morning brief with calendar, priority tasks, and assistant guidance.",
-          "ar": "الخلاصة الصباحية في ايميل تاسكر، وتعرض التقويم والمهام ذات الأولوية واقتراحات المساعد."
+          "en": "EmailTasker Today workspace with Needs Attention, work planned for today, and assistant guidance.",
+          "ar": "مساحة «اليوم» في ايميل تاسكر، وتعرض ما يحتاج الانتباه وما خُطط له اليوم وإرشادات المساعد."
+        }
+      },
+      "socialCard": {
+        "key": "social-card",
+        "paths": {
+          "default": "product/media/social-card-en.webp",
+          "ar": "product/media/social-card-ar.webp"
+        },
+        "alt": {
+          "en": "EmailTasker — AI secretary for your day",
+          "ar": "ايميل تاسكر — سكرتير بالذكاء الاصطناعي"
         }
       },
       "screenshots": [
@@ -87,7 +108,7 @@
             "default": "product/media/ai-memory-management.webp"
           },
           "alt": {
-            "en": "EmailTasker settings for assistant behavior, memory, and local-first controls.",
+            "en": "EmailTasker settings for assistant behavior and saved memory.",
             "ar": "إعدادات ايميل تاسكر للتحكم في طريقة عمل المساعد وما يتذكره."
           }
         },
@@ -111,6 +132,10 @@
       "releaseNotes": {
         "en": "https://github.com/azzuwayed/emailtasker-website/releases",
         "ar": "https://github.com/azzuwayed/emailtasker-website/releases"
+      },
+      "appStore": {
+        "en": "https://apps.apple.com/app/id6798834079",
+        "ar": "https://apps.apple.com/app/id6798834079"
       },
       "download": {
         "manifestUrl": "https://emailtasker.azzuwayed.com/updates.json",

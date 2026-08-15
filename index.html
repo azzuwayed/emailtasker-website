@@ -6,11 +6,11 @@
     <title>EmailTasker — AI secretary for your day</title>
     <meta
       name="description"
-      content="An AI secretary for your day on macOS. EmailTasker turns Microsoft email into tasks, keeps your calendar close, and helps you decide what to do first."
+      content="EmailTasker is your AI secretary for the day: turn Microsoft email into tasks, keep Today focused, and plan what comes next."
     />
     <meta
       name="product-revision"
-      content="24ac098d53f596e999570b25ffb78c7fd43074ab30b8c97574e0d173d1fc80eb"
+      content="d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85"
     />
     <link rel="canonical" href="https://emailtasker.azzuwayed.com/" />
     <link
@@ -23,32 +23,73 @@
       hreflang="en"
       href="https://emailtasker.azzuwayed.com/"
     />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://emailtasker.azzuwayed.com/"
+    />
     <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css?v=1" />
     <script src="download.js" defer></script>
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ar_SA" />
     <meta
       property="og:title"
       content="EmailTasker — AI secretary for your day"
     />
     <meta
       property="og:description"
-      content="Turn Microsoft email into tasks, keep your calendar close, and start each day knowing what to do first."
+      content="EmailTasker is your AI secretary for the day: turn Microsoft email into tasks, keep Today focused, and plan what comes next."
     />
     <meta property="og:url" content="https://emailtasker.azzuwayed.com/" />
     <meta
       property="og:image"
-      content="https://emailtasker.azzuwayed.com/assets/app-icon.png"
+      content="https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/social-card-en.webp"
     />
-    <script type="application/ld+json">
+    <meta
+      property="og:image:alt"
+      content="EmailTasker — AI secretary for your day"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="EmailTasker — AI secretary for your day"
+    />
+    <meta
+      name="twitter:description"
+      content="EmailTasker is your AI secretary for the day: turn Microsoft email into tasks, keep Today focused, and plan what comes next."
+    />
+    <meta
+      name="twitter:image"
+      content="https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/social-card-en.webp"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="EmailTasker — AI secretary for your day"
+    />
+    <script type="application/ld+json" data-product-json-ld>
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "EmailTasker",
         "applicationCategory": "BusinessApplication",
-        "operatingSystem": "macOS 14 or later",
+        "operatingSystem": "macOS 14 or later, iOS",
         "url": "https://emailtasker.azzuwayed.com/",
-        "description": "An AI secretary for your day on macOS: Microsoft email becomes tasks, with your calendar and assistant in one place."
+        "description": "EmailTasker is your AI secretary for the day: turn Microsoft email into tasks, keep Today focused, and plan what comes next.",
+        "image": "https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/social-card-en.webp",
+        "screenshot": [
+          "https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/hero.webp",
+          "https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/cockpit-focus.webp",
+          "https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/assistant.webp",
+          "https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/ai-memory-management.webp",
+          "https://emailtasker.azzuwayed.com/assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/all-clear.webp"
+        ],
+        "inLanguage": "en",
+        "sameAs": ["https://apps.apple.com/app/id6798834079"]
       }
     </script>
   </head>
@@ -57,7 +98,7 @@
       <nav class="shell nav">
         <a class="brand" href="./">
           <img src="assets/app-icon.svg" alt="" />
-          <span>EmailTasker</span>
+          <span data-product-field="displayName">EmailTasker</span>
         </a>
         <div class="nav-links">
           <a href="#product">Product</a>
@@ -71,15 +112,12 @@
       <section class="shell hero">
         <div>
           <p class="eyebrow">Tasks, calendar, one calm day</p>
-          <h1 data-product-field="tag">
-            Start with a morning brief, then turn email into a clear, manageable
-            day.
-          </h1>
+          <h1 data-product-field="tag">Your AI secretary for the day.</h1>
           <p class="hero-copy" data-product-field="overview">
-            EmailTasker brings Microsoft email, tasks, and calendars into one
-            native macOS workspace. Plan locally for free, start Pro days with a
-            focused morning brief, and work with an assistant whose reversible
-            actions can be undone.
+            EmailTasker turns Microsoft email into tasks automatically and keeps
+            Today focused on work planned or due today. Plan locally for free,
+            and use Pro for Microsoft mail, Mailing Lists, Morning Brief, and an
+            assistant whose reversible actions stay visible and undoable.
           </p>
           <div class="actions">
             <a
@@ -90,6 +128,14 @@
               data-manifest-url="updates.json"
               >Download for macOS</a
             >
+            <!-- product-app-store:start -->
+            <a
+              class="button"
+              href="https://apps.apple.com/app/id6798834079"
+              rel="noopener"
+              >Download on the App Store</a
+            >
+            <!-- product-app-store:end -->
             <a
               class="button"
               href="https://azzuwayed.com/en/products/emailtasker"
@@ -159,8 +205,8 @@
               <span class="feature-number">04</span>
               <h3>Turn important email into tasks</h3>
               <p data-product-highlight="email-tasks">
-                Turn actionable Microsoft messages into durable tasks, with
-                local rules available when AI is off.
+                Turn actionable Microsoft messages into durable tasks and review
+                Mailing Lists before unsubscribing.
               </p>
             </article>
             <article class="feature-card">
@@ -175,8 +221,8 @@
               <span class="feature-number">06</span>
               <h3>A Morning Brief when you want it</h3>
               <p data-product-highlight="brief">
-                Begin with a focused morning brief drawn from your tasks and
-                calendars.
+                Keep Today for work planned or due today, with missed plans
+                separated into Needs Attention.
               </p>
             </article>
           </div>
@@ -201,8 +247,9 @@
               </div>
               <div class="screenshot-frame">
                 <img
-                  src="assets/screenshots/cockpit-dark-mock.webp"
-                  alt="EmailTasker dark Today cockpit with calendar and priority columns"
+                  data-product-media="hero"
+                  src="assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/hero.webp"
+                  alt="EmailTasker Today workspace with Needs Attention, work planned for today, and assistant guidance."
                 />
               </div>
             </article>
@@ -217,8 +264,9 @@
               </div>
               <div class="screenshot-frame">
                 <img
-                  src="assets/screenshots/cockpit-focus.webp"
-                  alt="EmailTasker Focus mode showing high-priority tasks"
+                  data-product-media="cockpit-focus"
+                  src="assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/cockpit-focus.webp"
+                  alt="EmailTasker Focus view with a timeline and compact priority columns."
                 />
               </div>
             </article>
@@ -226,14 +274,15 @@
               <div class="screenshot-copy">
                 <h3>An assistant with working context</h3>
                 <p data-product-highlight="assistant">
-                  Approve assistant actions, undo reversible changes, and rate
-                  answers to improve your workflow.
+                  Ask your AI secretary what matters, inspect its actions, and
+                  undo reversible changes.
                 </p>
               </div>
               <div class="screenshot-frame">
                 <img
-                  src="assets/screenshots/assistant.webp"
-                  alt="EmailTasker assistant using remembered preferences and calendar context"
+                  data-product-media="assistant"
+                  src="assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/assistant.webp"
+                  alt="EmailTasker assistant response with task context and an approval state."
                 />
               </div>
             </article>
@@ -248,8 +297,9 @@
               </div>
               <div class="screenshot-frame">
                 <img
-                  src="assets/screenshots/ai-memory-management.webp"
-                  alt="EmailTasker settings for assistant autonomy, AI extraction, spending, and memory"
+                  data-product-media="ai-memory-management"
+                  src="assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/ai-memory-management.webp"
+                  alt="EmailTasker settings for assistant behavior and saved memory."
                 />
               </div>
             </article>
@@ -264,8 +314,9 @@
               </div>
               <div class="screenshot-frame">
                 <img
-                  src="assets/screenshots/all-clear-mock.webp"
-                  alt="EmailTasker all-clear state after completing the day's tasks"
+                  data-product-media="all-clear"
+                  src="assets/product/d210566e6d01ec31062e0fbfb8a4b46f8a38a70e818080ce3046c390e0a34e85/all-clear.webp"
+                  alt="EmailTasker all-clear state after the day’s tasks are handled."
                 />
               </div>
             </article>

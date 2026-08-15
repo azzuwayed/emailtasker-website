@@ -1,9 +1,32 @@
 #!/usr/bin/env node
 
 import { createHash } from "node:crypto";
-import { readFile, writeFile } from "node:fs/promises";
-import { basename, dirname, extname, join, resolve } from "node:path";
+import {
+  access,
+  copyFile,
+  mkdir,
+  readFile,
+  readdir,
+  rm,
+  writeFile,
+} from "node:fs/promises";
+import { constants } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import {
+  canonicalJson,
+  contentRevisionInput,
+  imageDimensions,
+  localePages,
+  mediaPaths,
+  mimeType,
+  pageDirectives,
+  publishedMediaPath,
+  renderPage,
+  validateManifest,
+  verifyPage,
+} from "./product-model.mjs";
 
 const websiteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const websiteName = basename(websiteRoot);
@@ -21,73 +44,28 @@ function fail(message) {
   throw new Error(`sync-product: ${message}`);
 }
 
-function byCodeUnit(left, right) {
-  return left < right ? -1 : left > right ? 1 : 0;
-}
+const sourceManifest = join(sourceRoot, "product", "manifest.json");
 
-function canonicalJson(value) {
-  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
-  if (value !== null && typeof value === "object") {
-    return `{${Object.entries(value)
-      .sort(([left], [right]) => byCodeUnit(left, right))
-      .map(([key, item]) => `${JSON.stringify(key)}:${canonicalJson(item)}`)
-      .join(",")}}`;
+/**
+ * This repository is public and clones standalone, so the sibling source
+ * checkout may not exist. Source parity is then unverifiable rather than
+ * failing: `check:site` still validates the committed publication end to end.
+ */
+async function hasSourceCheckout() {
+  try {
+    await access(sourceManifest, constants.R_OK);
+    return true;
+  } catch {
+    return false;
   }
-  return JSON.stringify(value);
-}
-
-function escapeHtml(value) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
-
-function replaceElement(html, attribute, value, label) {
-  const pattern = new RegExp(
-    `(<[^>]+${attribute.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}[^>]*>)[\\s\\S]*?(<\\/[^>]+>)`,
-  );
-  if (!pattern.test(html)) fail(`${label} marker is missing`);
-  return html.replace(pattern, `$1${escapeHtml(value)}$2`);
-}
-
-function mediaPaths(manifest) {
-  const items = [
-    ...(manifest.media.hero ? [manifest.media.hero] : []),
-    ...manifest.media.screenshots,
-  ];
-  const paths = new Set();
-  for (const item of items) {
-    if (manifest.schemaVersion === 1) {
-      paths.add(item.path);
-      continue;
-    }
-    paths.add(item.paths.default);
-    if (item.paths.en) paths.add(item.paths.en);
-    if (item.paths.ar) paths.add(item.paths.ar);
-  }
-  return [...paths].sort(byCodeUnit);
-}
-
-function mimeType(path) {
-  const extension = extname(path).toLowerCase();
-  if (extension === ".png") return "image/png";
-  if (extension === ".jpg" || extension === ".jpeg") return "image/jpeg";
-  if (extension === ".webp") return "image/webp";
-  fail(`unsupported media type: ${path}`);
 }
 
 async function publication() {
-  const manifest = JSON.parse(
-    await readFile(join(sourceRoot, "product", "manifest.json"), "utf8"),
-  );
-  if (manifest.schemaVersion !== 1 && manifest.schemaVersion !== 2) {
-    fail("schemaVersion must equal 1 or 2");
-  }
+  const manifest = JSON.parse(await readFile(sourceManifest, "utf8"));
   if (manifest.productId !== expectedProductId) {
     fail(`expected productId ${expectedProductId}, got ${manifest.productId}`);
   }
+
   const media = [];
   for (const path of mediaPaths(manifest)) {
     const bytes = await readFile(join(sourceRoot, path));
@@ -96,20 +74,42 @@ async function publication() {
       sha256: createHash("sha256").update(bytes).digest("hex"),
       bytes: bytes.length,
       mimeType: mimeType(path),
+      ...imageDimensions(bytes, path),
     });
   }
-  const input = [
-    canonicalJson(manifest),
-    ...media.map(
-      (item) => `${item.path}:${item.sha256}:${item.bytes}:${item.mimeType}`,
-    ),
-  ].join("\n");
+
+  const problems = validateManifest(manifest, media);
+  if (problems.length > 0) fail(problems.join("; "));
+
   return {
-    schemaVersion: 1,
-    productId: manifest.productId,
-    contentRevision: createHash("sha256").update(input).digest("hex"),
-    manifest,
+    product: {
+      schemaVersion: 1,
+      productId: manifest.productId,
+      contentRevision: createHash("sha256")
+        .update(contentRevisionInput(manifest, media))
+        .digest("hex"),
+      manifest,
+    },
+    media,
   };
+}
+
+/**
+ * Revision directories are immutable but not cumulative: only the current
+ * publication is reachable from a page, so the rest are dead weight.
+ */
+async function pruneRevisions(keep) {
+  const productAssets = join(websiteRoot, "assets", "product");
+  let entries;
+  try {
+    entries = await readdir(productAssets, { withFileTypes: true });
+  } catch {
+    return;
+  }
+  for (const entry of entries) {
+    if (!entry.isDirectory() || entry.name === keep) continue;
+    await rm(join(productAssets, entry.name), { recursive: true, force: true });
+  }
 }
 
 async function check() {
@@ -123,53 +123,71 @@ async function check() {
   ) {
     fail("product.json identity or revision is invalid");
   }
-  for (const page of ["index.html", join("ar", "index.html")]) {
-    const html = await readFile(join(websiteRoot, page), "utf8");
-    const revision = html.match(
-      /<meta\s+name="product-revision"\s+content="([a-f0-9]*)"\s*\/>/,
-    )?.[1];
-    if (revision !== product.contentRevision) {
-      fail(`${page} does not expose product.json revision`);
+  if (!(await hasSourceCheckout())) {
+    process.stdout.write(
+      `${product.productId} ${product.contentRevision} (source parity skipped: no checkout at ${sourceRoot})\n`,
+    );
+    return;
+  }
+
+  const expected = await publication();
+  if (canonicalJson(product) !== canonicalJson(expected.product)) {
+    fail("product.json does not match the accepted source manifest and media");
+  }
+  for (const item of expected.media) {
+    const bytes = await readFile(
+      join(websiteRoot, publishedMediaPath(product.contentRevision, item.path)),
+    );
+    if (
+      bytes.length !== item.bytes ||
+      createHash("sha256").update(bytes).digest("hex") !== item.sha256
+    ) {
+      fail(`published media does not match ${item.path}`);
     }
   }
+  const problems = [];
+  for (const [locale, config] of Object.entries(localePages)) {
+    const html = await readFile(join(websiteRoot, config.page), "utf8");
+    problems.push(
+      ...verifyPage(html, pageDirectives(product, expected.media, locale)),
+    );
+  }
+  if (problems.length > 0) fail(`\n${problems.join("\n")}`);
   process.stdout.write(`${product.productId} ${product.contentRevision}\n`);
 }
 
 async function sync() {
-  const product = await publication();
-  for (const [locale, page] of [
-    ["en", "index.html"],
-    ["ar", join("ar", "index.html")],
-  ]) {
-    const content = product.manifest.locales[locale];
-    let html = await readFile(join(websiteRoot, page), "utf8");
-    html = html.replace(
-      /<meta\s+name="product-revision"\s+content="[a-f0-9]*"\s*\/>/,
-      `<meta name="product-revision" content="${product.contentRevision}" />`,
+  const { product, media } = await publication();
+  for (const item of media) {
+    const target = join(
+      websiteRoot,
+      publishedMediaPath(product.contentRevision, item.path),
     );
-    for (const field of ["tag", "overview", "audience"]) {
-      html = replaceElement(
-        html,
-        `data-product-field="${field}"`,
-        content[field],
-        `${page} ${field}`,
-      );
-    }
-    for (const highlight of content.highlights) {
-      html = replaceElement(
-        html,
-        `data-product-highlight="${highlight.key}"`,
-        highlight.text,
-        `${page} highlight ${highlight.key}`,
-      );
-    }
-    await writeFile(join(websiteRoot, page), html);
+    await mkdir(dirname(target), { recursive: true });
+    await copyFile(join(sourceRoot, item.path), target);
+  }
+  // Render both pages before writing either: a missing marker must abort while
+  // the tree still points at a complete publication.
+  const rendered = [];
+  for (const [locale, config] of Object.entries(localePages)) {
+    const page = join(websiteRoot, config.page);
+    const html = await readFile(page, "utf8");
+    rendered.push([
+      page,
+      renderPage(html, pageDirectives(product, media, locale)),
+    ]);
+  }
+  for (const [page, html] of rendered) {
+    await writeFile(page, html);
   }
   await writeFile(
     join(websiteRoot, "product.json"),
     `${JSON.stringify(product, null, 2)}\n`,
   );
   await check();
+  // Last, so a failure above never strips the media the committed pages still
+  // reference.
+  await pruneRevisions(product.contentRevision);
 }
 
 (checkOnly ? check() : sync()).catch((error) => {
