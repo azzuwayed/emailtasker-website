@@ -9,6 +9,43 @@ Everything else described below is available with a membership.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-08-17
+
+### Added
+
+- **The app says which build it is.** Settings → About now shows the version, the build number where
+  there is one, and the channel, and the same line appears on the sign-in and recovery screens — so a
+  problem can be reported against one exact build rather than "the app".
+- **Today now means today.** Missed plans stay in Needs Attention, future and unscheduled work lives
+  in Plan, and tasks can carry a planning day separately from a hard deadline.
+- **One notification center collects the important follow-ups.** Morning Brief, account reconnects,
+  automation failures, and Mailing Lists cleanup now appear behind a bell with read and dismiss state.
+
+### Fixed
+
+- **A correction teaches a rhythm, not a date.** Correcting one email's plan day used to stamp that
+  exact date onto later mail from the same sender, which filed fresh work as already missed. It now
+  carries the offset you chose and never plans anything in the past.
+- **Notifications stay dismissed.** Acting on a mailing-list suggestion, or relaunching with an
+  account still disconnected, no longer lights the bell back up; only the source genuinely recurring
+  does. The first open shows a recent summary rather than one row per past day, closed rows are
+  cleared after 30 days, and an automation notice now opens the workflow it belongs to.
+- A hard deadline is no longer invented from a sender named Jacob, or from a date an email merely
+  mentions in passing.
+
+### Changed
+
+- **Subscriptions is now Mailing Lists and available with Pro for Microsoft accounts.** Google
+  remains limited to eligible Beta accounts while its provider review is pending.
+- **EmailTasker is presented as an AI secretary for your day.** The bilingual product and App Store
+  copy now describes protected Today, reviewed Mailing Lists, visible assistant actions, and Undo.
+- **Privacy is one clear choice.** The app asks once after sign-in, remembers the answer, and applies
+  reversible changes immediately with Undo.
+- **Arabic now reads more naturally.** Today, task planning, the assistant, and Task Rules use clearer,
+  locally familiar wording.
+- **Existing Mac users need to download and install this version once from the EmailTasker website.**
+  Future updates can then install in place.
+
 ## [1.2.0] - 2026-08-12
 
 ### Changed
