@@ -1,0 +1,19 @@
+{
+  "version": "1.2.0",
+  "notes": "### Changed\n\n- **The app opens faster.** EmailTasker now loads about half as much before it can draw its first\n  screen, and only fetches the parts of the app you actually open. Your language loads on its own\n  rather than both languages loading every time.\n- **The assistant feels smoother during long conversations.** Replies no longer slow down as a\n  conversation grows, and countdown timers stopped redrawing far more often than they showed.\n- **Large mailboxes recover much faster.** When a mail provider asks EmailTasker to start its sync\n  over, catching up now takes a fraction of the time it did on a big mailbox.\n- **Making a backup no longer freezes the app.** Copying your data while a snapshot is taken now\n  happens out of the way of everything else.\n\n### Fixed\n\n- **The keyboard now shows you where you are.** Moving through the app with Tab draws a clear focus\n  outline. Nothing changes when you use a mouse.\n- **Dialogs are usable without a mouse.** Opening one moves you into it, Tab stays inside it, and\n  closing it returns you to where you were. VoiceOver now announces dialogs when they open.\n- **A message you opened can be closed with Escape.** Previously the reader could only be dismissed\n  by clicking.\n- **The assistant's reply is now read aloud by VoiceOver** as it arrives.\n- **Newsletters can be opened from the keyboard** in the subscriptions list.\n- **The success animation that never appeared has been replaced** with the check mark that was\n  already shown to people who prefer reduced motion.",
+  "pub_date": "2026-08-12T00:00:00Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0pWckltT1dLRjNjWCs1blo4ZjVDU0RPVWUxTHNmOTAydndWWTNYQU5uSFpVeTYyK1d6UHFSYjNrODNBeGJHcko1RGV2ak8yTFY5UUxJRlZ4NjVVZncwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NTY1ODIwCWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5nego1OXM1VysrcExDSFZYVzI1Q0FPN0lhV1VXQ2c0MnlXb0hDNnRuWWE0YXJaRDRCUE8vOUcwZG1SK3NyTjVxWjBsVWpvRFhDNWttTGVRZ1pLWm5xQTFEdz09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.2.0/EmailTasker.app.tar.gz"
+    },
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOFJsc00zYXN5L0pWckltT1dLRjNjWCs1blo4ZjVDU0RPVWUxTHNmOTAydndWWTNYQU5uSFpVeTYyK1d6UHFSYjNrODNBeGJHcko1RGV2ak8yTFY5UUxJRlZ4NjVVZncwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NTY1ODIwCWZpbGU6RW1haWxUYXNrZXIuYXBwLnRhci5nego1OXM1VysrcExDSFZYVzI1Q0FPN0lhV1VXQ2c0MnlXb0hDNnRuWWE0YXJaRDRCUE8vOUcwZG1SK3NyTjVxWjBsVWpvRFhDNWttTGVRZ1pLWm5xQTFEdz09Cg==",
+      "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.2.0/EmailTasker.app.tar.gz"
+    }
+  },
+  "emailtasker": {
+    "payloadBase64": "",
+    "payloadSignature": ""
+  }
+}

@@ -2,14 +2,29 @@
   const allowedPrefix =
     "https://github.com/azzuwayed/emailtasker-website/releases/download/";
 
-  function resolveDmg(manifest) {
-    const candidate =
-      manifest?.platforms?.["darwin-aarch64"]?.dmg?.url ??
-      manifest?.macos?.arm64?.dmg?.url;
+  function resolveDmg(downloads) {
+    const candidate = downloads?.dmg?.url;
+    const expected = `${allowedPrefix}v${downloads?.version}/EmailTasker_${downloads?.version}_universal.dmg`;
     if (
+      Object.keys(downloads ?? {})
+        .sort()
+        .join(",") !== "dmg,minimumMacos,publishedAt,schemaVersion,version" ||
+      Object.keys(downloads?.dmg ?? {})
+        .sort()
+        .join(",") !== "sha256,sizeBytes,url" ||
+      downloads?.schemaVersion !== 1 ||
+      !/^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/.test(
+        downloads?.version ?? "",
+      ) ||
+      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(
+        downloads?.publishedAt ?? "",
+      ) ||
+      !/^\d+(?:\.\d+){1,2}$/.test(downloads?.minimumMacos ?? "") ||
+      !/^[0-9a-f]{64}$/.test(downloads?.dmg?.sha256 ?? "") ||
+      !Number.isSafeInteger(downloads?.dmg?.sizeBytes) ||
+      downloads.dmg.sizeBytes <= 0 ||
       typeof candidate !== "string" ||
-      !candidate.startsWith(allowedPrefix) ||
-      !candidate.endsWith(".dmg")
+      candidate !== expected
     ) {
       return null;
     }
@@ -18,7 +33,7 @@
 
   async function hydrateDownload(link) {
     try {
-      const response = await fetch(link.dataset.manifestUrl, {
+      const response = await fetch(link.dataset.downloadsUrl, {
         cache: "no-store",
       });
       if (!response.ok) return;

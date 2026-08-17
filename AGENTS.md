@@ -15,13 +15,13 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 - Run `pnpm check` before requesting a commit.
 - Send pricing, membership, account, support, and privacy to the localized `azzuwayed.com` routes.
 - Keep public download discovery on both the microsite and the localized Hub product page. Resolve
-  the direct installer from `updates.json`; the native app remains the Pro access boundary.
+  the direct installer from `downloads.json`; the native app remains the Pro access boundary.
 - Write copy in plain, benefit-first language. Never introduce technical or security jargon
   (encrypted, cache, boundary, extraction, sensitive, documented, local-first) or defensive
   privacy/security caveats into visible marketing copy — that detail lives on the
   `azzuwayed.com/privacy` page linked from the footer. This site's only job is to attract, not
   reassure.
-- Keep `CHANGELOG.md` and the release notes inside `updates.json` short and marketing-only: name the
+- Keep `CHANGELOG.md` and the release notes inside `updates-v2.json` short and marketing-only: name the
   customer benefit in plain language and omit implementation details, internal architecture,
   security controls, engineering terminology, and development-only work. Prepare the source release
   notes to this standard before EmailTasker's release workflow generates these files.
@@ -35,21 +35,24 @@ GitHub Pages at `emailtasker.azzuwayed.com`.
 
 - Add pricing, checkout, account, support, or privacy UI to this site.
 - Put secrets, private source, or unsigned release artifacts in this repository.
-- Hand-edit `updates.json`; EmailTasker's local release workflow owns it.
+- Hand-edit `updates-v2.json` or `downloads.json`; EmailTasker's local release workflow owns them.
+- Change `updates.json`; it is the byte-frozen 1.2.0 feed for sandboxed legacy installs.
 
 ## Layout
 
-| Path                        | Role                                                  |
-| --------------------------- | ----------------------------------------------------- |
-| `index.html`, `ar/`         | English and Arabic product pages                      |
-| `download.js`               | Validated latest-DMG link hydration                   |
-| `assets/`                   | Public icon plus revisioned manifest-owned media      |
-| `scripts/check-site.mjs`    | Static contract checks                                |
-| `CHANGELOG.md`              | Plain customer-facing release notes                   |
-| `updates.json`              | Generated signed-updater manifest after first release |
-| `product.json`              | Exact app-owned marketing revision                    |
-| `scripts/sync-product.mjs`  | Manifest-to-microsite renderer and parity gate        |
-| `scripts/product-model.mjs` | One owner of the manifest-to-page directives          |
+| Path                        | Role                                               |
+| --------------------------- | -------------------------------------------------- |
+| `index.html`, `ar/`         | English and Arabic product pages                   |
+| `download.js`               | Validated latest-DMG link hydration                |
+| `assets/`                   | Public icon plus revisioned manifest-owned media   |
+| `scripts/check-site.mjs`    | Static contract checks                             |
+| `CHANGELOG.md`              | Plain customer-facing release notes                |
+| `updates.json`              | Frozen 1.2.0 updater feed for legacy installs      |
+| `updates-v2.json`           | Active signed updater and rollout-control envelope |
+| `downloads.json`            | Schema-1 public latest-DMG discovery pointer       |
+| `product.json`              | Exact app-owned marketing revision                 |
+| `scripts/sync-product.mjs`  | Manifest-to-microsite renderer and parity gate     |
+| `scripts/product-model.mjs` | One owner of the manifest-to-page directives       |
 
 ## Commands
 
@@ -65,12 +68,16 @@ public changelog, product manifest, and both product pages — before the checkp
 sync:product` rewrites the pages unformatted, so anything it touches must be listed here or the gate
 fails on style alone.
 
+The cutter uses narrower `format:release:downloads` and `format:release:updater` commands for its two
+ordered checkpoints. The first must not touch `updates-v2.json`; the second must not touch
+`downloads.json` or product metadata.
+
 ## Key invariants
 
 - GitHub Releases contain the public signed artifacts; both the microsite and Hub product page link
   to the latest signed DMG.
 - The Hub catalog is the advertised membership surface, while download discovery is public.
-- `updates.json` is public update infrastructure, not an authorization boundary.
+- `updates-v2.json` and `downloads.json` are public update infrastructure, not authorization boundaries.
 - Visible product copy and `product.json` are generated from the source repo's bilingual manifest;
   edit the manifest, then sync this repo.
 - Keep the outer `product.json` envelope at schema 1. Its embedded manifest accepts schemas 1–3;

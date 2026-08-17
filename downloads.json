@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "version": "1.2.0",
+  "publishedAt": "2026-08-12T00:00:00Z",
+  "minimumMacos": "14.0",
+  "dmg": {
+    "url": "https://github.com/azzuwayed/emailtasker-website/releases/download/v1.2.0/EmailTasker_1.2.0_universal.dmg",
+    "sha256": "fd383c9ee1aa8a3214c02b64a49258dd286e1ab1d391ee79e2596c315e1e36fe",
+    "sizeBytes": 35289793
+  }
+}
