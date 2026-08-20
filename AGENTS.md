@@ -1,7 +1,7 @@
 # EmailTasker Website — Agent Context
 
-Static bilingual product microsite and public macOS release home for EmailTasker, deployed with
-GitHub Pages at `emailtasker.azzuwayed.com`.
+Static bilingual product home for EmailTasker's public Mac and iPhone apps, plus the public macOS
+artifact repository, deployed with GitHub Pages at `emailtasker.azzuwayed.com`.
 
 ## Boundaries
 

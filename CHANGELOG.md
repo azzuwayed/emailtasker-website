@@ -9,6 +9,10 @@ Everything else described below is available with a membership.
 
 ## [Unreleased]
 
+### Added
+
+- **EmailTasker is now on iPhone.** Download it from the App Store alongside the public Mac app.
+
 ## [1.3.0] - 2026-08-17
 
 ### Added

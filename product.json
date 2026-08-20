@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "productId": "emailtasker",
-  "contentRevision": "2f70c97942f638a3fa4a4e2bfa256a3104352f55faa2204f99dcc1f004506868",
+  "contentRevision": "1183909febc7587fff5cd4ae815a3abae9600edeed2eec129f8c1fcec6b49b49",
   "manifest": {
     "schemaVersion": 3,
     "productId": "emailtasker",
@@ -132,6 +132,10 @@
       "releaseNotes": {
         "en": "https://github.com/azzuwayed/emailtasker-website/releases",
         "ar": "https://github.com/azzuwayed/emailtasker-website/releases"
+      },
+      "appStore": {
+        "en": "https://apps.apple.com/app/id6798834079",
+        "ar": "https://apps.apple.com/app/id6798834079"
       },
       "download": {
         "manifestUrl": "https://emailtasker.azzuwayed.com/downloads.json",
