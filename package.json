@@ -3,17 +3,21 @@
   "private": true,
   "packageManager": "pnpm@11.8.0",
   "scripts": {
-    "check": "pnpm check:format && pnpm check:product && pnpm check:site",
-    "check:format": "prettier --check \"*.html\" \"*.js\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
+    "check": "pnpm check:format && pnpm check:product && pnpm check:site && pnpm check:auth-worker",
+    "check:format": "prettier --check \"*.html\" \"*.js\" \"ar/*.html\" \"infra/mobile-auth-worker/**/*.html\" \"infra/mobile-auth-worker/**/*.jsonc\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
+    "check:auth-worker": "pnpm auth-worker:deploy:dry",
     "check:site": "node scripts/check-site.mjs",
     "check:product": "node scripts/sync-product.mjs --check",
-    "format": "prettier --write \"*.html\" \"*.js\" \"ar/*.html\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
+    "format": "prettier --write \"*.html\" \"*.js\" \"ar/*.html\" \"infra/mobile-auth-worker/**/*.html\" \"infra/mobile-auth-worker/**/*.jsonc\" \"*.md\" \"*.json\" \"scripts/*.mjs\" \"style.css\"",
     "format:release": "prettier --write CHANGELOG.md updates-v2.json downloads.json product.json index.html \"ar/index.html\"",
     "format:release:downloads": "prettier --write CHANGELOG.md downloads.json product.json index.html \"ar/index.html\"",
     "format:release:updater": "prettier --write updates-v2.json",
-    "sync:product": "node scripts/sync-product.mjs"
+    "sync:product": "node scripts/sync-product.mjs",
+    "auth-worker:deploy": "pnpm exec wrangler deploy --config infra/mobile-auth-worker/wrangler.jsonc",
+    "auth-worker:deploy:dry": "pnpm exec wrangler deploy --dry-run --config infra/mobile-auth-worker/wrangler.jsonc"
   },
   "devDependencies": {
-    "prettier": "3.8.4"
+    "prettier": "3.8.4",
+    "wrangler": "4.124.0"
   }
 }

@@ -1,7 +1,8 @@
 # EmailTasker Website — Agent Context
 
 Static bilingual product home for EmailTasker's public Mac and iPhone apps, plus the public macOS
-artifact repository, deployed with GitHub Pages at `emailtasker.azzuwayed.com`.
+artifact repository deployed with GitHub Pages at `emailtasker.azzuwayed.com`. A separate assets-only
+Cloudflare Worker serves iOS auth-return files at `emailtasker-auth.azzuwayed.com`.
 
 ## Boundaries
 
@@ -16,6 +17,10 @@ artifact repository, deployed with GitHub Pages at `emailtasker.azzuwayed.com`.
 - Send pricing, membership, account, support, and privacy to the localized `azzuwayed.com` routes.
 - Keep public download discovery on both the microsite and the localized Hub product page. Resolve
   the direct installer from `downloads.json`; the native app remains the Pro access boundary.
+- Keep Apple association and mobile auth fallback assets under `infra/mobile-auth-worker/public`;
+  never publish them from the GitHub Pages root.
+- Keep the auth Worker assets-only, limited to its three documented paths, with unknown paths
+  returning 404 and fixed response headers declared in `public/_headers`.
 - Write copy in plain, benefit-first language. Never introduce technical or security jargon
   (encrypted, cache, boundary, extraction, sensitive, documented, local-first) or defensive
   privacy/security caveats into visible marketing copy — that detail lives on the
@@ -29,7 +34,7 @@ artifact repository, deployed with GitHub Pages at `emailtasker.azzuwayed.com`.
 **Ask first**
 
 - Adding dependencies, analytics, forms, storage, network destinations, or deployment systems.
-- Publishing a release or changing the custom domain.
+- Publishing a release, changing either custom domain, or running `pnpm auth-worker:deploy`.
 
 **Never**
 
@@ -53,6 +58,7 @@ artifact repository, deployed with GitHub Pages at `emailtasker.azzuwayed.com`.
 | `product.json`              | Exact app-owned marketing revision                 |
 | `scripts/sync-product.mjs`  | Manifest-to-microsite renderer and parity gate     |
 | `scripts/product-model.mjs` | One owner of the manifest-to-page directives       |
+| `infra/mobile-auth-worker/` | Dedicated assets-only iOS auth-return Worker       |
 
 ## Commands
 
@@ -61,6 +67,7 @@ pnpm install
 pnpm sync:product
 pnpm check
 pnpm format:release
+pnpm auth-worker:deploy:dry
 ```
 
 `pnpm format:release` formats everything the release checkpoint regenerates — the updater manifest,
@@ -78,6 +85,11 @@ ordered checkpoints. The first must not touch `updates-v2.json`; the second must
   to the latest signed DMG.
 - The Hub catalog is the advertised membership surface, while download discovery is public.
 - `updates-v2.json` and `downloads.json` are public update infrastructure, not authorization boundaries.
+- `emailtasker.azzuwayed.com` remains the GitHub Pages product, updater, and download origin;
+  `emailtasker-auth.azzuwayed.com` serves only AASA and the two auth fallback pages.
+- Keep the auth hostname's Custom Domain binding in `infra/mobile-auth-worker/wrangler.jsonc`; it is
+  the DNS/TLS source of truth.
+- Auth Worker deployment is manual. Do not add automatic CI deployment.
 - Visible product copy and `product.json` are generated from the source repo's bilingual manifest;
   edit the manifest, then sync this repo.
 - Keep the outer `product.json` envelope at schema 1. Its embedded manifest accepts schemas 1–3;

@@ -1,0 +1,16 @@
+/.well-known/apple-app-site-association
+  Cache-Control: public, max-age=3600, must-revalidate, no-transform
+  Content-Security-Policy: default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Type: application/json
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/mobile-auth/*
+  Cache-Control: no-store
+  Content-Security-Policy: default-src 'none'; script-src 'sha256-ZYPNu9BcFVvPLSKylwee6OXjqrXOcgMSs2U6RtTBCHk=' 'sha256-FbLBhbIUyPZTjU8yqY0TWdkodbEhoY1Lhz1GB9QnmeQ='; style-src 'sha256-NxrEsG/GBWPYCBkW83pps34CG4voyqeyGSQyzocM9GU='; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'
+  Content-Type: text/html; charset=utf-8
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-Robots-Tag: noindex, nofollow, noarchive

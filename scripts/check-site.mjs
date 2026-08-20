@@ -17,6 +17,8 @@ import {
 } from "./product-model.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const authWorkerRoot = path.join(root, "infra/mobile-auth-worker");
+const authAssetsRoot = path.join(authWorkerRoot, "public");
 const failures = [];
 const htmlFiles = Object.values(localePages).map((config) =>
   path.join(root, config.page),
@@ -28,6 +30,19 @@ function relative(file) {
 
 function read(file) {
   return fs.readFileSync(file, "utf8");
+}
+
+function walkFiles(directory, base = directory) {
+  const files = [];
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...walkFiles(absolute, base));
+    } else if (entry.isFile()) {
+      files.push(path.relative(base, absolute));
+    }
+  }
+  return files.sort();
 }
 
 /** Runs a unit of the shared model, turning its throw into one failure line. */
@@ -265,6 +280,333 @@ for (const expected of [
   }
 }
 
+for (const legacyPath of [
+  ".well-known/apple-app-site-association",
+  "mobile-auth/callback/index.html",
+  "mobile-auth/dev/callback/index.html",
+]) {
+  if (fs.existsSync(path.join(root, legacyPath))) {
+    failures.push(
+      `${legacyPath}: mobile auth assets must not ship from the GitHub Pages origin`,
+    );
+  }
+}
+
+const workerConfigPath = path.join(authWorkerRoot, "wrangler.jsonc");
+const expectedWorkerFiles = [
+  "public/.well-known/apple-app-site-association",
+  "public/_headers",
+  "public/mobile-auth/callback/index.html",
+  "public/mobile-auth/dev/callback/index.html",
+  "wrangler.jsonc",
+];
+if (
+  !fs.existsSync(authWorkerRoot) ||
+  JSON.stringify(walkFiles(authWorkerRoot)) !==
+    JSON.stringify(expectedWorkerFiles)
+) {
+  failures.push(
+    "infra/mobile-auth-worker: asset inventory must contain only the config, AASA, headers, and two callback pages",
+  );
+}
+const expectedWorkerConfig = {
+  $schema: "../../node_modules/wrangler/config-schema.json",
+  name: "emailtasker-auth",
+  compatibility_date: "2026-08-20",
+  workers_dev: false,
+  preview_urls: false,
+  routes: [
+    {
+      pattern: "emailtasker-auth.azzuwayed.com",
+      custom_domain: true,
+    },
+  ],
+  observability: {
+    enabled: false,
+  },
+  assets: {
+    directory: "./public",
+    html_handling: "auto-trailing-slash",
+    not_found_handling: "none",
+  },
+};
+if (!fs.existsSync(workerConfigPath)) {
+  failures.push("missing infra/mobile-auth-worker/wrangler.jsonc");
+} else {
+  try {
+    const workerConfig = JSON.parse(
+      read(workerConfigPath).replace(/,\s*([}\]])/g, "$1"),
+    );
+    if (JSON.stringify(workerConfig) !== JSON.stringify(expectedWorkerConfig)) {
+      failures.push(
+        "infra/mobile-auth-worker/wrangler.jsonc: dedicated assets-only Custom Domain configuration is not exact",
+      );
+    }
+  } catch (error) {
+    failures.push(
+      `infra/mobile-auth-worker/wrangler.jsonc: invalid JSON: ${error.message}`,
+    );
+  }
+}
+
+const associationRelativePath =
+  "infra/mobile-auth-worker/public/.well-known/apple-app-site-association";
+const associationPath = path.join(root, associationRelativePath);
+const expectedAssociation = {
+  applinks: {
+    apps: [],
+    details: [
+      {
+        appID: "6HCZJT6JFZ.com.azzuwayed.emailtasker",
+        paths: ["/mobile-auth/callback/"],
+      },
+      {
+        appID: "6HCZJT6JFZ.com.azzuwayed.emailtasker.dev",
+        paths: ["/mobile-auth/dev/callback/"],
+      },
+    ],
+  },
+};
+if (!fs.existsSync(associationPath)) {
+  failures.push(`missing ${associationRelativePath}`);
+} else {
+  try {
+    const association = JSON.parse(read(associationPath));
+    if (JSON.stringify(association) !== JSON.stringify(expectedAssociation)) {
+      failures.push(
+        `${associationRelativePath}: app identifiers and paths are not exact`,
+      );
+    }
+  } catch (error) {
+    failures.push(`${associationRelativePath}: invalid JSON: ${error.message}`);
+  }
+}
+
+function checkMobileAuthFallback(relativePath, expectedPath, copy) {
+  const workerRelativePath = path.join(
+    "infra/mobile-auth-worker/public",
+    relativePath,
+  );
+  const file = path.join(authAssetsRoot, relativePath);
+  if (!fs.existsSync(file)) {
+    failures.push(`missing ${workerRelativePath}`);
+    return;
+  }
+  const html = read(file);
+  const firstScript = html.match(
+    /<head>\s*<meta charset="utf-8"\s*\/>\s*<script>([\s\S]*?)<\/script>/i,
+  );
+  if (!firstScript) {
+    failures.push(
+      `${workerRelativePath}: parameter scrub is not the first script`,
+    );
+  } else {
+    let replaced;
+    try {
+      new vm.Script(firstScript[1], {
+        filename: workerRelativePath,
+      }).runInNewContext({
+        window: {
+          location: {
+            search: "?code=secret",
+            hash: "#state=secret",
+            pathname: expectedPath,
+          },
+          history: {
+            replaceState: (...args) => {
+              replaced = args;
+            },
+          },
+        },
+      });
+    } catch (error) {
+      failures.push(
+        `${workerRelativePath}: parameter scrub failed: ${error.message}`,
+      );
+    }
+    if (
+      !replaced ||
+      replaced.length !== 3 ||
+      replaced[0] !== null ||
+      replaced[1] !== "" ||
+      replaced[2] !== expectedPath
+    ) {
+      failures.push(
+        `${workerRelativePath}: query and fragment are not replaced with the clean path`,
+      );
+    }
+  }
+
+  for (const expected of [
+    '<meta name="robots" content="noindex,nofollow,noarchive" />',
+    '<meta name="referrer" content="no-referrer" />',
+    '<meta http-equiv="Cache-Control" content="no-store" />',
+    'data-locale="en"',
+    'data-locale="ar" lang="ar" dir="rtl"',
+    ...copy,
+  ]) {
+    if (!html.includes(expected)) {
+      failures.push(`${workerRelativePath}: missing ${expected}`);
+    }
+  }
+
+  const englishSection = html.match(
+    /<section data-locale="en">([\s\S]*?)<\/section>/i,
+  )?.[1];
+  const arabicSection = html.match(
+    /<section data-locale="ar"[^>]*>([\s\S]*?)<\/section>/i,
+  )?.[1];
+  for (const tag of ["h1", "p"]) {
+    const englishCount = englishSection?.match(
+      new RegExp(`<${tag}>`, "g"),
+    )?.length;
+    const arabicCount = arabicSection?.match(
+      new RegExp(`<${tag}>`, "g"),
+    )?.length;
+    if (
+      englishCount !== arabicCount ||
+      englishCount !== (tag === "h1" ? 1 : 2)
+    ) {
+      failures.push(
+        `${workerRelativePath}: English and Arabic recovery structure is not equivalent`,
+      );
+    }
+  }
+  for (const forbidden of [
+    /<(?:img|iframe|link|source|video|audio)\b/i,
+    /<(?:script|form)\b[^>]*(?:src|action)\s*=/i,
+    /\b(?:fetch|XMLHttpRequest|WebSocket|sendBeacon)\s*\(/,
+    /https?:\/\//i,
+  ]) {
+    if (forbidden.test(html)) {
+      failures.push(
+        `${workerRelativePath}: callback page can make an external request`,
+      );
+    }
+  }
+}
+
+checkMobileAuthFallback(
+  "mobile-auth/callback/index.html",
+  "/mobile-auth/callback/",
+  [
+    "Reopen EmailTasker to finish signing in.",
+    "افتح EmailTasker من جديد لإكمال تسجيل الدخول.",
+  ],
+);
+checkMobileAuthFallback(
+  "mobile-auth/dev/callback/index.html",
+  "/mobile-auth/dev/callback/",
+  [
+    "Reopen EmailTasker Development to finish signing in.",
+    "افتح نسخة EmailTasker التطويرية من جديد لإكمال تسجيل الدخول.",
+  ],
+);
+
+function parseHeaderRules(contents) {
+  const rules = new Map();
+  let currentRule;
+  for (const line of contents.split(/\r?\n/)) {
+    if (!line.trim() || line.trimStart().startsWith("#")) continue;
+    if (!/^\s/.test(line)) {
+      currentRule = line.trim();
+      rules.set(currentRule, new Map());
+      continue;
+    }
+    const header = line.trim().match(/^([^:]+):\s*(.*)$/);
+    if (!currentRule || !header) {
+      failures.push(
+        "infra/mobile-auth-worker/public/_headers: invalid header rule",
+      );
+      continue;
+    }
+    rules.get(currentRule).set(header[1].toLowerCase(), header[2]);
+  }
+  return rules;
+}
+
+function inlineSourceHashes(tag) {
+  const hashes = new Set();
+  for (const relativePath of [
+    "mobile-auth/callback/index.html",
+    "mobile-auth/dev/callback/index.html",
+  ]) {
+    const file = path.join(authAssetsRoot, relativePath);
+    if (!fs.existsSync(file)) continue;
+    for (const match of read(file).matchAll(
+      new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, "g"),
+    )) {
+      hashes.add(
+        `'sha256-${createHash("sha256").update(match[1]).digest("base64")}'`,
+      );
+    }
+  }
+  return [...hashes];
+}
+
+const headersRelativePath = "infra/mobile-auth-worker/public/_headers";
+const headersPath = path.join(root, headersRelativePath);
+if (!fs.existsSync(headersPath)) {
+  failures.push(`missing ${headersRelativePath}`);
+} else {
+  const rules = parseHeaderRules(read(headersPath));
+  const scriptHashes = inlineSourceHashes("script");
+  const styleHashes = inlineSourceHashes("style");
+  const expectedRules = new Map([
+    [
+      "/.well-known/apple-app-site-association",
+      new Map([
+        [
+          "cache-control",
+          "public, max-age=3600, must-revalidate, no-transform",
+        ],
+        [
+          "content-security-policy",
+          "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+        ],
+        ["content-type", "application/json"],
+        ["referrer-policy", "no-referrer"],
+        ["x-content-type-options", "nosniff"],
+        ["x-robots-tag", "noindex, nofollow, noarchive"],
+      ]),
+    ],
+    [
+      "/mobile-auth/*",
+      new Map([
+        ["cache-control", "no-store"],
+        [
+          "content-security-policy",
+          `default-src 'none'; script-src ${scriptHashes.join(" ")}; style-src ${styleHashes.join(" ")}; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'`,
+        ],
+        ["content-type", "text/html; charset=utf-8"],
+        ["referrer-policy", "no-referrer"],
+        ["x-content-type-options", "nosniff"],
+        ["x-frame-options", "DENY"],
+        ["x-robots-tag", "noindex, nofollow, noarchive"],
+      ]),
+    ],
+  ]);
+
+  if (
+    JSON.stringify([...rules.keys()]) !==
+    JSON.stringify([...expectedRules.keys()])
+  ) {
+    failures.push(`${headersRelativePath}: route patterns are not exact`);
+  }
+  for (const [route, expectedHeaders] of expectedRules) {
+    const actualHeaders = rules.get(route);
+    if (!actualHeaders) continue;
+    if (
+      JSON.stringify([...actualHeaders]) !==
+      JSON.stringify([...expectedHeaders])
+    ) {
+      failures.push(
+        `${headersRelativePath}: ${route} security headers or inline-source hashes are not exact`,
+      );
+    }
+  }
+}
+
 const manifestPath = path.join(root, "updates.json");
 if (fs.existsSync(manifestPath)) {
   try {
@@ -475,5 +817,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "site check passed: EN/AR pages, manifest-derived SEO and media, public downloads, localized Hub handoffs, and updater host",
+  "site check passed: EN/AR Pages site, dedicated mobile auth Worker assets and headers, manifest-derived SEO and media, public downloads, localized Hub handoffs, and updater host",
 );

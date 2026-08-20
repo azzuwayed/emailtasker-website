@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "6HCZJT6JFZ.com.azzuwayed.emailtasker",
+        "paths": ["/mobile-auth/callback/"]
+      },
+      {
+        "appID": "6HCZJT6JFZ.com.azzuwayed.emailtasker.dev",
+        "paths": ["/mobile-auth/dev/callback/"]
+      }
+    ]
+  }
+}

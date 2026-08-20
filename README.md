@@ -35,3 +35,32 @@ immutable URLs, and the sync deletes the revision directories no page still poin
 The embedded product manifest points both the Hub and microsite at `/downloads.json`, while retaining
 the public latest-release fallback and GitHub download allowlist. Every production deployment keeps
 both product pages aligned with the features customers can use.
+
+## iOS authentication return host
+
+The assets-only Cloudflare Worker in `infra/mobile-auth-worker` owns the dedicated
+`emailtasker-auth.azzuwayed.com` Custom Domain. It serves only the exact Apple association document
+and the production and development recovery pages:
+
+- `/.well-known/apple-app-site-association`
+- `/mobile-auth/callback/`
+- `/mobile-auth/dev/callback/`
+
+Unknown paths return 404. The callback pages immediately remove OAuth parameters, load no external
+resources, and are not application sign-in endpoints. Their real edge headers are declared in the
+Worker asset directory's `_headers` file, including `Cache-Control: no-store`,
+`Referrer-Policy: no-referrer`, and a CSP pinned to the fixed inline scripts and style. The
+association document is served as `application/json` without a redirect.
+
+The `routes[].custom_domain` entry in `wrangler.jsonc` is the DNS/TLS source of truth. A manual
+deployment provisions the hostname and certificate through Cloudflare; do not duplicate that binding
+as an unrelated dashboard-managed route.
+
+```bash
+pnpm auth-worker:deploy:dry
+pnpm auth-worker:deploy # manual production deployment; never run from CI
+```
+
+`pnpm check` includes the dry-run. The GitHub Pages origin remains exclusively the product, updater,
+and download host: its `CNAME`, release process, and published file tree do not include these auth
+assets.
