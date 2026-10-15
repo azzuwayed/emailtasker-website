@@ -28,6 +28,15 @@ function relative(file) {
   return path.relative(root, file);
 }
 
+function newerVersion(candidate, current) {
+  const a = String(candidate).split(".").map(Number);
+  const b = String(current).split(".").map(Number);
+  for (let i = 0; i < 3; i += 1) {
+    if (a[i] !== b[i]) return a[i] > b[i];
+  }
+  return false;
+}
+
 function read(file) {
   return fs.readFileSync(file, "utf8");
 }
@@ -768,8 +777,14 @@ if (!fs.existsSync(downloadsPath)) {
         `https://github.com/azzuwayed/emailtasker-website/releases/download/v${downloads.version}/EmailTasker_${downloads.version}_universal.dmg`;
     if (!valid)
       failures.push("downloads.json: invalid schema-1 download pointer");
+    // A release publishes download discovery first and the signed feed in a
+    // later commit, so between those two commits the pointer leads the feed.
+    // Only a pointer for the feed's own version must equal its signed payload.
+    const leadsFeed =
+      valid && v2Payload && newerVersion(downloads.version, v2Payload.version);
     if (
       v2Payload &&
+      !leadsFeed &&
       JSON.stringify(downloads) !==
         JSON.stringify({
           schemaVersion: 1,
