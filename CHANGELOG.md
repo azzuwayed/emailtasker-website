@@ -2,16 +2,113 @@
 
 Simple, customer-facing changes in EmailTasker releases.
 
-Some of what follows is still open to invited accounts only. Subscriptions and inbox cleanup,
-Workflows, Task Rules, connected knowledge, assistant Work jobs, and Google accounts are being
-finished with a small group first, and each will be announced here when it opens to everyone.
+Some of what follows is still open to invited accounts only. Workflows, Task Rules, connected
+knowledge, assistant Work jobs, and Google accounts are being finished with a small group first, and
+each will be announced here when it opens to everyone.
 Everything else described below is available with a membership.
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-10-15
+
 ### Added
 
-- **EmailTasker is now on iPhone.** Download it from the App Store alongside the public Mac app.
+- **A sidebar you can collapse.** The workspaces moved from a row of tabs in the title bar to a
+  sidebar down the side of the window, with icons, and with your accounts, notifications, appearance
+  and Settings at the foot of it — reachable from every workspace instead of only from Today.
+  Collapse it to icons with `⌘\`, or jump straight to a workspace with `⌘` and its number; it opens
+  the way you left it.
+- **Notifications follow you.** The bell used to be drawn only on Today, so a notice such as an
+  account that needed reconnecting was invisible from the very screens it points at. It sits in the
+  sidebar now.
+- **Settings is a place in the sidebar.** It used to take over the whole window; now it opens beside
+  the sidebar with its own list of sections, and you leave it by picking somewhere else. Your board keeps its place and any half-written task while you are in there.
+- **The window resizes.** It was locked to one width and could not be zoomed. It now stretches as
+  wide as you like, maximizes, and remembers the size you chose.
+- **Delete a task in one tap, with Undo.** Deleting no longer asks first; it happens right away and
+  offers Undo, on the Mac and on iPhone alike.
+- **The Mac menu bar speaks Arabic.** The application menu now follows the app's language, like the
+  rest of EmailTasker.
+- **Sign in to azzuwayed.com in your language.** The sign-in and consent pages now open in English
+  or Arabic to match the app.
+- **Open-source licenses.** A Licenses link beside the version in Settings → General lists the
+  open-source software inside EmailTasker by license, with search.
+- **"Use another account" really switches accounts.** It is now on the sign-in screen, and instead of
+  signing straight back in to the account your browser was already using, azzuwayed.com asks who is
+  signing in.
+- **EmailTasker is now on iPhone.** Download it from the App Store alongside the Mac app.
+
+### Fixed
+
+- **Retrying a failed message keeps its attachments.** A retried chat message used to lose the files
+  you had attached to it.
+- **Archived or deleted mail stays gone.** A message you had archived or deleted could briefly
+  reappear in Today's mail preview.
+- **The first-run screen no longer runs off the edge.** On some displays the window could open
+  narrower than the layout allowed, cutting the Terms of Use and Privacy Policy buttons off the
+  right with no way to scroll to them. The window is corrected to a workable size before it appears.
+- **A rare hang is gone.** With automatic mail processing set to read more of each email, the
+  assistant and mail updates could occasionally get stuck until EmailTasker was reopened. They no
+  longer do.
+- **The latest security fixes.** EmailTasker includes the most recent fixes for how email is shown
+  and how the app connects to your accounts.
+- **Undo works on what the assistant created.** Undoing a task or calendar event the assistant had
+  just created could fail instead of removing it. It now reverses it as it should.
+- **An older version says when your data is newer.** If a newer EmailTasker had already updated your
+  local data, an older one said the data needed a software fix and offered to start empty. It now
+  asks you to install the latest version, which opens your data as it was.
+- **Arabic labels join up again.** The small capitalised labels over boards, cards and steps spaced
+  their letters apart, which in Arabic pulled each word into separate letters; in Arabic they now set
+  solid. The assistant's step timings and the AI balance in the chat window now read in Arabic too.
+- **Numbers in Arabic use one set of digits.** A few Arabic labels wrote their numbers in
+  Arabic-Indic digits while the dates and counts beside them used 0–9. Dates, times, counts and
+  percentages now all use 0–9 in Arabic. Numbers inside your mail still show as they were written.
+- **Dates and times read in order in Arabic.** Date and time fields showed their parts back to
+  front in Arabic, so 12:30 PM read "PM 30:12". They now read in the right order wherever you pick a
+  date or a time.
+- **Arabic lines that start with an English name stay on the right.** In Arabic, a settings line
+  that began with an English word — a device's name, or Pro in your membership status — jumped to the
+  left edge and read out of order. It now lines up with the Arabic around it.
+- **Membership status says what happened.** Settings → Accounts kept saying "Access ends" beside a
+  date that had already passed. Once that date has passed it says "Access ended", and a membership
+  that ended early no longer shows an end date still to come. While a refund is processed it says
+  "Refund in progress". With renewal turned off, "Renewal is off" sits under the end date, and the
+  reminder before your membership ends says so too.
+- **An empty Mail Accounts section says why.** With no mail account connected, Settings → Accounts
+  showed a heading over an empty box. It now says so and, when one can't be added from this Mac right
+  now, gives the reason.
+- **Devices you can tell apart.** The Devices list called every unnamed Mac "This device" and showed
+  devices with the same name as identical rows. Only the device you are using is marked "This Mac"
+  now, and every other one shows its type and the day it was added (and last active, if later) — here
+  and in the list you see on reaching your device limit.
+- **The Pro badge on the assistant button is readable.** When the assistant needs Pro, the badge on
+  its button was drawn in almost the colour of its own background. It now reads clearly in light and
+  dark.
+- **Security details open in place.** In Privacy & Data, the button that opens Security details
+  jumped above the text and stretched across the section once pressed. It now stays where you
+  clicked it, and the details open beneath it.
+- **Errors and warnings show in colour.** Several error and warning messages in Settings, and a step
+  the assistant could not finish, were drawn in the plain text colour. They now show in red or amber. In Mailing Lists, the note that counts are not
+  yet complete is tinted amber and the progress bar fills in while your mailbox is scanned, and a
+  finished Getting Started step shows its green tick.
+- **Empty lists read correctly in Arabic.** When there was nothing to show — no notifications,
+  messages, tasks or events — the Arabic said so with the wrong grammatical agreement. It now reads
+  correctly.
+
+### Changed
+
+- **Accepting how your data is handled is now required to use EmailTasker.** The first-run screen
+  has one button. EmailTasker is built around its assistant, so there was no working version of the
+  app behind a refusal. You can still withdraw at any time in Settings → Privacy & Data — that stops
+  everything and returns you to the screen, without deleting anything on your device.
+- **Settings says when two devices both spend AI units.** Each of your devices processes new mail
+  itself, so the Inbox → Today note now says that running EmailTasker on two devices spends AI units
+  on both.
+- **Devices says the seats belong to your Pro membership.** Every azzuwayed app shares them, so the
+  list includes devices you use with other apps; Settings → Accounts now says so, shows how many
+  seats your membership includes, and warns that removing a device ends its Pro in all of them. This
+  Mac now appears as "Mac" on azzuwayed.com instead of a code; an existing seat is renamed the first
+  time EmailTasker checks your membership after updating.
 
 ## [1.3.0] - 2026-08-17
 
