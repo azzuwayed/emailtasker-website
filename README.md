@@ -4,12 +4,12 @@ Public product microsite and release repository for EmailTasker.
 
 - Product site: [emailtasker.azzuwayed.com](https://emailtasker.azzuwayed.com)
 - Membership and access:
-  [azzuwayed.com/en/products/emailtasker](https://azzuwayed.com/en/products/emailtasker)
+  [Azzuwayed Platform/en/products/emailtasker](https://azzuwayed.com/en/products/emailtasker)
 - Arabic:
-  [azzuwayed.com/ar/products/emailtasker](https://azzuwayed.com/ar/products/emailtasker)
+  [Azzuwayed Platform/ar/products/emailtasker](https://azzuwayed.com/ar/products/emailtasker)
 
 The static site describes the product and links to the latest signed macOS installer. Pricing,
-membership, accounts, support, and privacy live on azzuwayed.com, whose product page exposes the same
+membership, accounts, support, and privacy live on Azzuwayed Platform, whose product page exposes the same
 public download. Public GitHub Releases hold the installer and updater artifacts; EmailTasker still
 requires membership activation after installation.
 
@@ -64,3 +64,10 @@ pnpm auth-worker:deploy # manual production deployment; never run from CI
 `pnpm check` includes the dry-run. The GitHub Pages origin remains exclusively the product, updater,
 and download host: its `CNAME`, release process, and published file tree do not include these auth
 assets.
+
+## Platform naming
+
+Shared accounts and services use **Azzuwayed Platform** / **منصة الزويد**.
+Membership uses **Azzuwayed Pro** / **الزويد Pro**; the umbrella brand is
+**Azzuwayed** / **الزويد**. Product names, actual URLs, identifiers, and legal
+owner names stay unchanged. Engineering titles appear only in prose about a person.
