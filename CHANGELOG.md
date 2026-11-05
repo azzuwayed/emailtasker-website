@@ -9,6 +9,56 @@ Everything else described below is available with a membership.
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-11-05
+
+### Added
+
+- **More controls on iPhone.** Choose your Morning Brief time, daily automatic AI-unit limit,
+  and task-card details, and open linked tasks from Mail.
+
+- **Portable encrypted backups.** Save your tasks, local events, conversations, memories, and rules
+  to a password-protected file, then restore them on your Mac or iPhone. Account connections and
+  automations wait for your review after restoration.
+
+- **Local reminders on Mac and iPhone.** Get notified before task deadlines and meetings, or choose
+  a custom reminder time. Each alert names the task or meeting and says when it is due, in your
+  language; your device's Show Previews setting decides what the lock screen shows. Scheduled
+  reminders can arrive while EmailTasker is closed and respect Focus. Tap a reminder to open its item.
+- **Notification controls for each device.** Choose which alerts you receive, pick reminder lead
+  times from a list or enter your own, set the sound, check system permission, and send a test
+  notification from Settings.
+- **The bell names each reminder.** Task and meeting reminders in the notification bell show the
+  item's title and when it is due instead of a generic line.
+- **Act on a reminder without opening the app.** A task reminder offers Snooze for 10 minutes, 1
+  hour, or until tomorrow morning, and Mark done, on Mac and iPhone; a meeting reminder offers Open.
+  Snooze and Mark done apply right away and show in the app with Undo the next time you look. A
+  snooze that would pass the task's hard deadline waits for your choice in the app instead.
+
+### Changed
+
+- **Sign in once after updating.** Your account sign-in moves to a stronger, app-specific
+  connection, so EmailTasker asks you to sign in again one time. Your tasks and settings stay on
+  your device.
+
+- Account and membership screens consistently use Azzuwayed Platform and Azzuwayed Pro.
+
+- Settings loads when opened, reducing startup work. Multiple accounts refresh together while
+  local updates stay ordered, and repeated connection failures wait longer between attempts.
+
+- Setting a reminder turns on notifications for it automatically, requests permission when needed,
+  and offers system-settings recovery when alerts are blocked.
+
+### Fixed
+
+- Failed mailbox refreshes keep saved work visible and identify affected accounts with their last
+  successful update.
+- Calendar date selection reaches past and future local events, with Today navigation and a note
+  when mailbox dates have not been loaded.
+- Reset and restore wait for ongoing work to settle, save both stores consistently, and show
+  recovery progress.
+- External tools recheck current permissions before running. Connection routing and dependency
+  security fixes strengthen protection for saved credentials.
+
 ## [1.4.1] - 2026-10-15
 
 ### Added
